@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TascaMantenimentTestBase {
+public class TascaMantenimentTest {
     private TascaManteniment tasca;
     private Allotjament allotjament;
 
