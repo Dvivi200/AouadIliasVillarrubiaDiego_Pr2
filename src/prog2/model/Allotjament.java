@@ -5,6 +5,8 @@ public abstract class Allotjament implements InAllotjament {
     private String identificador;
     private long dies_temp_baixa;
     private long dies_temp_alta;
+    private boolean estat;
+    private String il_luminacio;
 
     //Constructor per tests
     public Allotjament(String nom, String identificador, long dies_temp_alta, long dies_temp_baixa) {
@@ -16,9 +18,11 @@ public abstract class Allotjament implements InAllotjament {
     }
 
     //Constructor per les subclasses
-    public Allotjament(String nom, String idAllotjament) {
+    public Allotjament(String nom, String idAllotjament, boolean estat, String il_luminacio) {
         this.nom = nom;
         this.identificador = idAllotjament;
+        this.estat = estat;
+        this.il_luminacio = il_luminacio;
     }
 
     //Getters i setters
@@ -40,6 +44,14 @@ public abstract class Allotjament implements InAllotjament {
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
         this.dies_temp_baixa = estadaMinimaBAIXA_;
         this.dies_temp_alta = estadaMinimaALTA_;
+    }
+
+    public void tancarAllotjament(TascaManteniment tasca){
+
+    }
+
+    public void obrirAllotjament(){
+
     }
 
     //toString de la superclasse

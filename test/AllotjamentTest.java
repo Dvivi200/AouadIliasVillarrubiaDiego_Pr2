@@ -5,7 +5,7 @@ import prog2.model.InAllotjament;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class AllotjamentTestBase {
+class AllotjamentTest {
 
     private Allotjament allotjament;
 

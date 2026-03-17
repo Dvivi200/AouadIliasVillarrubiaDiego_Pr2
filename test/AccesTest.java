@@ -5,7 +5,7 @@ import prog2.vista.ExcepcioCamping;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AccesTestBase {
+public class AccesTest {
 
     private Acces acces1;
     private Acces acces2;
