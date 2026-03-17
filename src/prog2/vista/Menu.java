@@ -2,7 +2,7 @@
  * Universitat de Barcelona
  * Programació 2
  */
-package prog2.model;
+package prog2.vista;
 
 import java.util.Scanner;
 
