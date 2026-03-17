@@ -1,0 +1,48 @@
+package prog2.model;
+
+public class BungalowPremium extends Bungalow{
+    private boolean serveisExtra;
+    private String codiWifi;
+
+    //Constructor
+    public BungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+                           int placesParquing, boolean terrassa, boolean tv, boolean aireFred,
+                           boolean serveisExtra, String codiWifi) {
+        super(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        this.serveisExtra = serveisExtra;
+        this.codiWifi = codiWifi;
+
+    }
+
+    //Funcionament correcte si te aire fred i codiWifi entre 8 i 16 caracters
+    @Override
+    public boolean correcteFuncionament() {
+        return isAireFred() && getCodiWifi().matches("(\\w{8,16})");
+    }
+
+    //toString de la subclasse
+    @Override
+    public String toStringGlobal() {
+        return super.toStringCasa() + "Bungalow Premium{places de Parking=" + getPlacesParking() +
+                ", terrassa=" + isTerrassa() + ", tv=" + isTv() + ", aire fred=" + isAireFred() +
+                ", serveis Extra=" + serveisExtra + ", Codi Wifi=" + codiWifi + "}";
+    }
+
+    //Getters i setters
+    public boolean isServeisExtra() {
+        return serveisExtra;
+    }
+
+    public void setServeisExtra(boolean serveisExtra) {
+        this.serveisExtra = serveisExtra;
+    }
+
+    public String getCodiWifi() {
+        return codiWifi;
+    }
+
+    public void setCodiWifi(String codiWifi) {
+        this.codiWifi = codiWifi;
+    }
+}
+
