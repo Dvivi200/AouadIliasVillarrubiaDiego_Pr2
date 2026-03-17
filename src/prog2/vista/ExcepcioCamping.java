@@ -4,6 +4,5 @@ public class ExcepcioCamping extends Exception {
 
     public ExcepcioCamping(String message) {
         super(message);
-    }sgdfogeog
-
+    }
 }
