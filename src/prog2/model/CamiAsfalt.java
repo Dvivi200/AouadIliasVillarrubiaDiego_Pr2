@@ -1,19 +1,9 @@
 package prog2.model;
 
 public class CamiAsfalt extends AccesAsfalt {
-    @Override
-    public void afegirAllotjament(Allotjament allotjament) {
 
-    }
-
-    @Override
-    public void tancarAcces() {
-
-    }
-
-    @Override
-    public void obrirAcces() {
-
+    public CamiAsfalt(String nom, boolean accesibilitat, float asfalt) {
+        super(nom, accesibilitat, asfalt);
     }
 
     @Override
@@ -21,18 +11,4 @@ public class CamiAsfalt extends AccesAsfalt {
         return false;
     }
 
-    @Override
-    public String getNom() {
-        return "";
-    }
-
-    @Override
-    public boolean getEstat() {
-        return false;
-    }
-
-    @Override
-    public LlistaAllotjaments getAAllotjaments() {
-        return null;
-    }
 }
