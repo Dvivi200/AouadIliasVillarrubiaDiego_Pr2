@@ -8,21 +8,15 @@ public abstract class Allotjament implements InAllotjament {
     private boolean estat;
     private String il_luminacio;
 
-    //Constructor per tests
-    public Allotjament(String nom, String identificador, long dies_temp_alta, long dies_temp_baixa) {
-        this.nom = nom;
-        this.identificador = identificador;
-        this.dies_temp_alta = dies_temp_alta;
-        this.dies_temp_baixa = dies_temp_baixa;
-
-    }
 
     //Constructor per les subclasses
-    public Allotjament(String nom, String idAllotjament, boolean estat, String il_luminacio) {
+    public Allotjament(String nom, String idAllotjament, long dies_temp_alta, long dies_temp_baixa, boolean estat, String il_luminacio) {
         this.nom = nom;
         this.identificador = idAllotjament;
-        this.estat = estat;
-        this.il_luminacio = il_luminacio;
+        this.dies_temp_alta = dies_temp_alta;
+        this.dies_temp_baixa = dies_temp_baixa;
+        this.estat = true;
+        this.il_luminacio = "100%";
     }
 
     //Getters i setters
@@ -46,6 +40,10 @@ public abstract class Allotjament implements InAllotjament {
         this.dies_temp_alta = estadaMinimaALTA_;
     }
 
+    public boolean isOperatiu() {
+        return estat;
+    }
+
     public void tancarAllotjament(TascaManteniment tasca){
 
     }
@@ -66,9 +64,13 @@ public abstract class Allotjament implements InAllotjament {
     //mètode per a les subclasses
     public abstract boolean correcteFuncionament();
 
+    public String getIluminacio() {
+        return il_luminacio;
+    }
 
-
-
+    public void setIluminacio(String il_luminacio) {
+        this.il_luminacio = il_luminacio;
+    }
 }
 
 

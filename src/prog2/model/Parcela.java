@@ -5,8 +5,8 @@ public class Parcela extends Allotjament {
     private boolean connexioElectrica;
 
     //Constructor
-    public Parcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica){
-        super(nom_, idAllotjament_);
+    public Parcela(String nom_, String idAllotjament_, long dies_temp_alta, long dies_temp_baixa, boolean estat, String il_luminacio, float metres, boolean connexioElectrica){
+        super(nom_, idAllotjament_, dies_temp_alta, dies_temp_baixa, estat, il_luminacio);
         this.metres = metres;
         this.connexioElectrica = connexioElectrica;
     }

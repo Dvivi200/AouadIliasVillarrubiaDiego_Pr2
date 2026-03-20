@@ -126,13 +126,13 @@ public class Camping implements InCamping{
         float mida = 64.0f;
         boolean connexioElectrica = true;
 
-        Parcela ALL1 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
+        Parcela ALL1 = new Parcela(nom, idAllotjament, 4, 2, true, "100%", mida, connexioElectrica);
         llistaAllotjaments.afegirAllotjament(ALL1);
 
         nom = "Parcel·la Sud";
         idAllotjament = "ALL2";
 
-        Parcela ALL2 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
+        Parcela ALL2 = new Parcela(nom, idAllotjament, 4, 2, true, "100%", mida, connexioElectrica);
         llistaAllotjaments.afegirAllotjament(ALL2);
 
         // Afegir bungalows:
@@ -148,7 +148,7 @@ public class Camping implements InCamping{
         boolean tv= true;
         boolean aireFred = true;
 
-        Bungalow ALL3 = new Bungalow(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        Bungalow ALL3 = new Bungalow(nom, idAllotjament, 7, 4, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         llistaAllotjaments.afegirAllotjament(ALL3);
 
 
@@ -166,7 +166,7 @@ public class Camping implements InCamping{
         boolean serveisExtra = true;
         String codiWifi = "CampingDelMarBP1";
 
-        BungalowPremium ALL4 = new BungalowPremium(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        BungalowPremium ALL4 = new BungalowPremium(nom, idAllotjament, 7, 4, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
         llistaAllotjaments.afegirAllotjament(ALL4);
 
         // Afegir Glamping:
@@ -180,7 +180,7 @@ public class Camping implements InCamping{
         String material = "Tela";
         boolean casaMascota = true;
 
-        Glamping ALL5 = new Glamping(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, material, casaMascota);
+        Glamping ALL5 = new Glamping(nom, idAllotjament, 5, 3, true, "100%", mida, habitacions, placesPersones, material, casaMascota);
         llistaAllotjaments.afegirAllotjament(ALL5);
 
 
@@ -194,7 +194,7 @@ public class Camping implements InCamping{
         placesPersones = 4;
         boolean terrassaBarbacoa = true;
 
-        MobilHome ALL6 = new MobilHome(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, terrassaBarbacoa);
+        MobilHome ALL6 = new MobilHome(nom, idAllotjament, 5, 3, true, "100%", mida, habitacions, placesPersones, terrassaBarbacoa);
         llistaAllotjaments.afegirAllotjament(ALL6);
 
         /* Accés */
