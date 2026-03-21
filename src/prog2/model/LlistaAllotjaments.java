@@ -14,6 +14,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
 
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
+        if (allotjament == null) throw new ExcepcioCamping("No s'ha pogut afegir cap allotjament");
         llistaAllotjaments.add(allotjament);
     }
 
@@ -30,19 +31,21 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     @Override
     public boolean containsAllotjamentOperatiu() {
         boolean op = false;
-        int i = 0;
 
-        while(!op){
-            if(llistaAllotjaments.get(i).isOperatiu())
-                op = true;
-            else
-                i++;
+        for(int i = 0; i < llistaAllotjaments.size() && !op; i++){
+            if(llistaAllotjaments.get(i).isOperatiu()) op = true;
         }
+
         return op;
     }
 
     @Override
     public boolean contains(Allotjament allotjament) {
+        for(Allotjament all : llistaAllotjaments){
+            if(all.equals(allotjament))
+
+                return true;
+        }
         return false;
     }
 
