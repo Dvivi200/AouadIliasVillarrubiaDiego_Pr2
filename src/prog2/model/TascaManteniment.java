@@ -73,7 +73,8 @@ public class TascaManteniment implements InTascaManteniment {
     }
 
     public String toString(){
-        return "";
+        return "Numero de tasca: " + num + ", tipus de tasca: " + tipus + ", allotjament de la tasca: " +
+                allotjament + ", data: " + data + ", durada de la tasca: " + dies + ". ";
     }
 
     @Override
