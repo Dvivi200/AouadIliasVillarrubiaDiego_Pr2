@@ -45,11 +45,17 @@ public abstract class Allotjament implements InAllotjament {
     }
 
     public void tancarAllotjament(TascaManteniment tasca){
-
+        this.estat = false;
+        switch (tasca.getTipus()) {
+            case Reparacio, RevisioTecnica -> il_luminacio = "50%";
+            case Neteja ->  il_luminacio = "100%";
+            case Desinfeccio ->   il_luminacio = "0%";
+        }
     }
 
     public void obrirAllotjament(){
-
+        this.estat = true;
+        this.il_luminacio = "100%";
     }
 
     //toString de la superclasse

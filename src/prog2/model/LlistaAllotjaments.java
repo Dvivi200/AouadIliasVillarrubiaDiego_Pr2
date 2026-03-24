@@ -24,11 +24,12 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     }
 
     @Override
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+    public String llistarAllotjaments(boolean estat) throws ExcepcioCamping {
         StringBuffer llista = new StringBuffer();
         for (Allotjament a : llistaAllotjaments) {
-            llista.append(a.toString()).append("\n");
+            if(a.isOperatiu() == estat) llista.append(a.toString()).append("\n");
         }
+        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha allotjaments amb l'estat demanat");
         return llista.toString();
     }
 
