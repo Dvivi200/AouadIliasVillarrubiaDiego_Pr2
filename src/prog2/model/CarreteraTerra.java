@@ -21,4 +21,9 @@ public class CarreteraTerra extends AccesTerra {
     public void setAmplada(float amplada) {
         this.amplada = amplada;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Longitud: " + getLongitud() + ", Amplada: " + this.amplada;
+    }
 }

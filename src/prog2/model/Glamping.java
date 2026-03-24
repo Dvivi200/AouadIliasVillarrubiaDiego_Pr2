@@ -6,7 +6,7 @@ public class Glamping extends Casa{
 
     //Constructor
     public Glamping(String nom_, String idAllotjament_, long dies_temp_alta, long dies_temp_baixa,
-                    boolean estat, String il_luminacio, String mida, int habitacions, int placesPersones,
+                    boolean estat, String il_luminacio, float mida, int habitacions, int placesPersones,
                     String material, boolean casaMascota) {
         super(nom_, idAllotjament_, dies_temp_alta, dies_temp_baixa, estat, il_luminacio, mida, habitacions, placesPersones);
         this.material = material;
@@ -22,8 +22,8 @@ public class Glamping extends Casa{
 
     //toString de la subclasse
     @Override
-    public String toStringGlobal() {
-        return super.toStringCasa() + "Glamping{Material=" + material + ", casa per mascota=" + casaMascota + "}";
+    public String toString() {
+        return super.toString() + "Glamping{Material=" + material + ", casa per mascota=" + casaMascota + "}";
     }
 
     //Getters i setters

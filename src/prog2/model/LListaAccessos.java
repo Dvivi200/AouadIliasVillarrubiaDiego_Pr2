@@ -25,7 +25,11 @@ public class LListaAccessos implements InLlistaAccessos {
 
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        return "";
+        StringBuffer llista = new StringBuffer();
+        for (Acces a : llistaAccessos) {
+            llista.append(a.toString()).append("\n");
+        }
+        return llista.toString();
     }
 
     @Override
