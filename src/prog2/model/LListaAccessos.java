@@ -4,11 +4,11 @@ import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
 
-public class LListaAccessos implements InLlistaAccessos {
+public class LlistaAccessos implements InLlistaAccessos {
 
     private ArrayList<Acces> llistaAccessos;
 
-    public LListaAccessos() {
+    public LlistaAccessos() {
         llistaAccessos = new ArrayList<>();
     }
 
@@ -27,8 +27,9 @@ public class LListaAccessos implements InLlistaAccessos {
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         StringBuffer llista = new StringBuffer();
         for (Acces a : llistaAccessos) {
-            llista.append(a.toString()).append("\n");
+            if(a.getEstat() == estat) llista.append(a.toString()).append("\n");
         }
+        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha accessos amb l'estat demanat");
         return llista.toString();
     }
 

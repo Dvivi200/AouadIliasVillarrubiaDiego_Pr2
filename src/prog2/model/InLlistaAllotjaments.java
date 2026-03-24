@@ -27,7 +27,7 @@ public interface InLlistaAllotjaments {
      * @return String
      * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi allotjaments en l'estat passat com a paràmetre.
      */
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping;
+    public String llistarAllotjaments(boolean estat) throws ExcepcioCamping;
     
     /**
      * Mira si la llista d'allotjaments conté algun allotjament operatiu.
