@@ -22,4 +22,9 @@ public class CarreteraAsfaltada extends AccesAsfalt {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", Asfalt" + getAsfalt() + ", Pes màxim: " + this.pes_maxim;
+    }
+
 }

@@ -8,7 +8,7 @@ public class Bungalow extends Casa{
 
     //Constructor
     public Bungalow(String nom, String identificador, long dies_temp_alta, long dies_temp_baixa,
-                    boolean estat, String il_luminacio, String mida, int habitacions, int placesPersones,
+                    boolean estat, String il_luminacio, float mida, int habitacions, int placesPersones,
                     int placesParking, boolean terrassa, boolean tv, boolean aireFred) {
         super(nom, identificador, dies_temp_alta, dies_temp_baixa, estat, il_luminacio, mida, habitacions, placesPersones);
         this.placesParking = placesParking;
@@ -25,8 +25,8 @@ public class Bungalow extends Casa{
 
     //toString de la subclasse
     @Override
-    public String toStringGlobal() {
-        return super.toStringCasa() + "Bungalow{places de Parking=" + placesParking + ", terrassa="
+    public String toString() {
+        return super.toString() + "Bungalow{places de Parking=" + placesParking + ", terrassa="
                 + terrassa + ", tv=" + tv + ", aire fred=" + aireFred + "}";
     }
 

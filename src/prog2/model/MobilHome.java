@@ -5,7 +5,7 @@ public class MobilHome extends Casa{
 
     //Constructor
     public MobilHome(String nom_, String idAllotjament_, long dies_temp_alta, long dies_temp_baixa,
-                     boolean estat, String il_luminacio, String mida, int habitacions,
+                     boolean estat, String il_luminacio, float mida, int habitacions,
                      int placesPersones, boolean terrassaBarbacoa) {
         super(nom_, idAllotjament_, dies_temp_alta, dies_temp_baixa, estat, il_luminacio, mida, habitacions,placesPersones);
         this.terrassaBarbacoa = terrassaBarbacoa;
@@ -19,8 +19,8 @@ public class MobilHome extends Casa{
 
     //toString de la subclasse
     @Override
-    public String toStringGlobal() {
-        return super.toStringCasa() + "Mobil-Home{Terrassa amb barbacoa=" + terrassaBarbacoa + "}";
+    public String toString() {
+        return super.toString() + "Mobil-Home{Terrassa amb barbacoa=" + terrassaBarbacoa + "}";
     }
 
     //Getters i setters

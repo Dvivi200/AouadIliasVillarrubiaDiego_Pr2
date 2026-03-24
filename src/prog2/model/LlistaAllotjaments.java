@@ -25,7 +25,11 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
 
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return "";
+        StringBuffer llista = new StringBuffer();
+        for (Allotjament a : llistaAllotjaments) {
+            llista.append(a.toString()).append("\n");
+        }
+        return llista.toString();
     }
 
     @Override
@@ -33,7 +37,8 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
         boolean op = false;
 
         for(int i = 0; i < llistaAllotjaments.size() && !op; i++){
-            if(llistaAllotjaments.get(i).isOperatiu()) op = true;
+            if(llistaAllotjaments.get(i).isOperatiu())
+                op = true;
         }
 
         return op;
@@ -43,7 +48,6 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     public boolean contains(Allotjament allotjament) {
         for(Allotjament all : llistaAllotjaments){
             if(all.equals(allotjament))
-
                 return true;
         }
         return false;

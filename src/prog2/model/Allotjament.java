@@ -15,8 +15,8 @@ public abstract class Allotjament implements InAllotjament {
         this.identificador = idAllotjament;
         this.dies_temp_alta = dies_temp_alta;
         this.dies_temp_baixa = dies_temp_baixa;
-        this.estat = true;
-        this.il_luminacio = "100%";
+        this.estat = estat;
+        this.il_luminacio = il_luminacio;
     }
 
     //Getters i setters
@@ -56,11 +56,9 @@ public abstract class Allotjament implements InAllotjament {
     public String toString() {
         return "Nom=" + getNom() + ", Id=" + getId() + ", estada mínima en temp ALTA: "
                 + getEstadaMinima(Temp.ALTA) + ", estada mínima en temp BAIXA: "
-                + getEstadaMinima(Temp.BAIXA) + ".";
+                + getEstadaMinima(Temp.BAIXA) + ". ";
     }
 
-    //toString per a les subclasses
-    public abstract String toStringGlobal();
     //mètode per a les subclasses
     public abstract boolean correcteFuncionament();
 

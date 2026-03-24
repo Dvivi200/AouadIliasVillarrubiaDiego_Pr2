@@ -25,8 +25,8 @@ public class Parcela extends Allotjament {
 
     //toString de la subclasse
     @Override
-    public String toStringGlobal() {
-        return super.toString() + " Parcela{mida=" + getMida() +
+    public String toString() {
+        return super.toString() + "Parcela{mida=" + getMida() +
                 ", connexioElectrica=" + isConnexioElectrica() + "}";
     }
 }

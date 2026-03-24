@@ -25,7 +25,11 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
 
     @Override
     public String llistarTasquesManteniment() throws ExcepcioCamping {
-        return "";
+        StringBuffer llista = new StringBuffer();
+        for (TascaManteniment a : llistaTasquesManteniment) {
+            llista.append(a.toString()).append("\n");
+        }
+        return llista.toString();
     }
 
     @Override
