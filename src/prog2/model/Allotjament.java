@@ -49,7 +49,8 @@ public abstract class Allotjament implements InAllotjament {
     }
 
     public void obrirAllotjament(){
-
+        setIluminacio("100%");
+        setEstat(true);
     }
 
     //toString de la superclasse
@@ -69,7 +70,12 @@ public abstract class Allotjament implements InAllotjament {
     public void setIluminacio(String il_luminacio) {
         this.il_luminacio = il_luminacio;
     }
+
+    public void setEstat(boolean estat) {this.estat = estat;}
+
+    public boolean getEstat() {return estat;}
 }
+
 
 
 
