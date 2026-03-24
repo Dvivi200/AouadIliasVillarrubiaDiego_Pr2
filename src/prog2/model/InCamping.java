@@ -19,7 +19,7 @@ public interface InCamping {
      * @return String
      * @throws ExcepcioCamping
      */
-    String llistarAllotjaments(String estat) throws ExcepcioCamping;
+    String llistarAllotjaments(boolean estat) throws ExcepcioCamping;
 
     /**
      * Llista els accessos segons l'estat indicat.
@@ -86,5 +86,5 @@ public interface InCamping {
     /**
      * Inicialitza les dades del càmping amb valors predeterminats.
      */
-    void inicialitzaDadesCamping();
+    void inicialitzaDadesCamping() throws ExcepcioCamping;
 }

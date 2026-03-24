@@ -12,15 +12,24 @@ import java.util.ArrayList;
 public class Camping implements InCamping{
 
     private String nomCamping;
+    private LlistaAllotjaments llistaAllotjaments;
+    private LlistaAccessos llistaAccessos;
+    private LlistaTasquesManteniment llistaTasquesManteniment;
 
+    public Camping(String nomCamping) {
+        this.nomCamping = nomCamping;
+        this.llistaAllotjaments = new LlistaAllotjaments();
+        this.llistaAccessos = new LlistaAccessos();
+        llistaTasquesManteniment = new LlistaTasquesManteniment();
+    }
     @Override
     public String getNomCamping() {
         return nomCamping;
     }
 
     @Override
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return "";
+    public String llistarAllotjaments(boolean estat) throws ExcepcioCamping {
+        return llistaAllotjaments.llistarAllotjaments(estat);
     }
 
     @Override

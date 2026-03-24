@@ -6,7 +6,7 @@ public class VistaCamping {
 
     public VistaCamping(String nom) {
         this.nom = nom;
-        camping = new Camping();
+        this.camping = new Camping(nom);
         camping.inicialitzaDadesCamping();
     }
 
