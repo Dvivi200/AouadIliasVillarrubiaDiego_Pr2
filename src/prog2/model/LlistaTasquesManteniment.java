@@ -20,7 +20,8 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
 
     @Override
     public void completarTascaManteniment(TascaManteniment tasca) throws ExcepcioCamping {
-
+        llistaTasquesManteniment.remove(tasca);
+        tasca.getAllotjament().obrirAllotjament();
     }
 
     @Override

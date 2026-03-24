@@ -2,6 +2,10 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -220,4 +224,16 @@ public class Camping implements InCamping{
         Acc11.afegirAllotjament(ALL6);
         Acc12.afegirAllotjament(ALL6);
     }
+
+    @Override
+    public void save(String camíDestí) throws ExcepcioCamping {
+        File fitxer = new File("Camping.dat");
+
+        FileInputStream fin=new FileInputStream(fitxer);
+        FileOutputStream fout= new FileOutputStream(fitxer);
+
+    }
+
+    @Override
+    static Camping load(String camiOrigen) throws ExcepcioCamping;
 }
