@@ -2,14 +2,11 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Camping implements InCamping{
+public class Camping implements InCamping, Serializable {
 
     private String nomCamping;
     private LlistaAllotjaments llistaAllotjaments;
@@ -33,38 +30,42 @@ public class Camping implements InCamping{
     }
 
     @Override
-    public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        return "";
+    public String llistarAccessos(boolean infoEstat) throws ExcepcioCamping {
+        return llistaAccessos.llistarAccessos(infoEstat);
     }
 
     @Override
     public String llistarTasquesManteniment() throws ExcepcioCamping {
-        return "";
+        return llistaTasquesManteniment.llistarTasquesManteniment();
     }
 
     @Override
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
+        llistaTasquesManteniment.afegirTascaManteniment(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data, dies);
 
     }
 
     @Override
     public void completarTascaManteniment(int num) throws ExcepcioCamping {
-
+        llistaTasquesManteniment.completarTascaManteniment(llistaTasquesManteniment.getTascaManteniment(num));
     }
 
     @Override
     public int calculaAccessosNoAccessibles() {
-        return 0;
+        try {
+            return llistaAccessos.calculaAccessosNoAccessibles();
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public float calculaMetresTerra() {
-        return 0;
-    }
-
-    @Override
-    public void save(String camiDesti) throws ExcepcioCamping {
-
+        try {
+            return llistaAccessos.calculaMetresTerra();
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -74,57 +75,105 @@ public class Camping implements InCamping{
 
         float asfalt = 200;
         Acces Acc1 = new CamiAsfaltat("A1", true, asfalt);
-        llistaAccessos.afegirAcces(Acc1);
+        try {
+            llistaAccessos.afegirAcces(Acc1);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         asfalt = 800;
         float pesMaxim = 10000;
         Acces Acc2 = new CarreteraAsfaltada("A2", true, asfalt, pesMaxim);
-        llistaAccessos.afegirAcces(Acc2);
+        try {
+            llistaAccessos.afegirAcces(Acc2);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         float longitud = 100;
         Acces Acc3 = new CamiTerra("A3", true, longitud);
-        llistaAccessos.afegirAcces(Acc3);
+        try {
+            llistaAccessos.afegirAcces(Acc3);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         longitud = 200;
         float amplada = 3;
         Acces Acc4 = new CarreteraTerra("A4", true, longitud, amplada);
-        llistaAccessos.afegirAcces(Acc4);
+        try {
+            llistaAccessos.afegirAcces(Acc4);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         asfalt = 350;
         Acces Acc5 = new CamiAsfaltat("A5", true, asfalt);
-        llistaAccessos.afegirAcces(Acc5);
+        try {
+            llistaAccessos.afegirAcces(Acc5);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         asfalt = 800;
         pesMaxim = 12000;
         Acces Acc6 = new CarreteraAsfaltada("A6", true, asfalt, pesMaxim);
-        llistaAccessos.afegirAcces(Acc6);
+        try {
+            llistaAccessos.afegirAcces(Acc6);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         asfalt = 100;
         Acces Acc7 = new CamiAsfaltat("A7", true, asfalt);
-        llistaAccessos.afegirAcces(Acc7);
+        try {
+            llistaAccessos.afegirAcces(Acc7);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         asfalt = 800;
         pesMaxim = 10000;
         Acces Acc8 = new CarreteraAsfaltada("A8", true, asfalt, pesMaxim);
-        llistaAccessos.afegirAcces(Acc8);
+        try {
+            llistaAccessos.afegirAcces(Acc8);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         longitud = 50;
         Acces Acc9 = new CamiTerra("A9", true, longitud);
-        llistaAccessos.afegirAcces(Acc9);
+        try {
+            llistaAccessos.afegirAcces(Acc9);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         longitud = 400;
         amplada = 4;
         Acces Acc10 = new CarreteraTerra("A10", true, longitud, amplada);
-        llistaAccessos.afegirAcces(Acc10);
+        try {
+            llistaAccessos.afegirAcces(Acc10);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         longitud = 80;
         Acces Acc11 = new CamiTerra("A11", true, longitud);
-        llistaAccessos.afegirAcces(Acc11);
+        try {
+            llistaAccessos.afegirAcces(Acc11);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         longitud = 800;
         amplada = 5;
         Acces Acc12 = new CarreteraTerra("A12", true, longitud, amplada);
-        llistaAccessos.afegirAcces(Acc12);
+        try {
+            llistaAccessos.afegirAcces(Acc12);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
 
         /* Pistes */
@@ -140,13 +189,21 @@ public class Camping implements InCamping{
         boolean connexioElectrica = true;
 
         Parcela ALL1 = new Parcela(nom, idAllotjament, 4, 2, true, "100%", mida, connexioElectrica);
-        llistaAllotjaments.afegirAllotjament(ALL1);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL1);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         nom = "Parcel·la Sud";
         idAllotjament = "ALL2";
 
         Parcela ALL2 = new Parcela(nom, idAllotjament, 4, 2, true, "100%", mida, connexioElectrica);
-        llistaAllotjaments.afegirAllotjament(ALL2);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL2);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         // Afegir bungalows:
         //------------------------------
@@ -162,7 +219,11 @@ public class Camping implements InCamping{
         boolean aireFred = true;
 
         Bungalow ALL3 = new Bungalow(nom, idAllotjament, 7, 4, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
-        llistaAllotjaments.afegirAllotjament(ALL3);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL3);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
 
         // Afegir bungalows premium:
@@ -180,7 +241,11 @@ public class Camping implements InCamping{
         String codiWifi = "CampingDelMarBP1";
 
         BungalowPremium ALL4 = new BungalowPremium(nom, idAllotjament, 7, 4, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
-        llistaAllotjaments.afegirAllotjament(ALL4);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL4);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         // Afegir Glamping:
         //------------------------------
@@ -194,7 +259,11 @@ public class Camping implements InCamping{
         boolean casaMascota = true;
 
         Glamping ALL5 = new Glamping(nom, idAllotjament, 5, 3, true, "100%", mida, habitacions, placesPersones, material, casaMascota);
-        llistaAllotjaments.afegirAllotjament(ALL5);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL5);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
 
         // Afegir Mobil-Home:
@@ -208,7 +277,11 @@ public class Camping implements InCamping{
         boolean terrassaBarbacoa = true;
 
         MobilHome ALL6 = new MobilHome(nom, idAllotjament, 5, 3, true, "100%", mida, habitacions, placesPersones, terrassaBarbacoa);
-        llistaAllotjaments.afegirAllotjament(ALL6);
+        try {
+            llistaAllotjaments.afegirAllotjament(ALL6);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
         /* Accés */
         Acc1.afegirAllotjament(ALL1); Acc1.afegirAllotjament(ALL2);
@@ -226,14 +299,28 @@ public class Camping implements InCamping{
     }
 
     @Override
-    public void save(String camíDestí) throws ExcepcioCamping {
-        File fitxer = new File("Camping.dat");
-
-        FileInputStream fin=new FileInputStream(fitxer);
-        FileOutputStream fout= new FileOutputStream(fitxer);
+    public void save(String camiDesti) throws ExcepcioCamping {
+        Camping c = new Camping("Camping");
+        File fitxer = new File(camiDesti);
+        try {
+            FileOutputStream fos = new FileOutputStream(fitxer);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(c);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
-    @Override
-    static Camping load(String camiOrigen) throws ExcepcioCamping;
+    static Camping load(String camiOrigen) throws ExcepcioCamping {
+        File fitxer = new File(camiOrigen);
+        try {
+            FileInputStream fin = new FileInputStream(fitxer);
+            ObjectInputStream fout = new ObjectInputStream(fin);
+            Camping c = (Camping) fout.readObject();
+            return c;
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

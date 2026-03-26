@@ -27,7 +27,7 @@ public interface InCamping {
      * @return String
      * @throws ExcepcioCamping
      */
-    String llistarAccessos(String infoEstat) throws ExcepcioCamping;
+    String llistarAccessos(boolean infoEstat) throws ExcepcioCamping;
 
     /**
      * Llista les tasques registrades al càmping.
