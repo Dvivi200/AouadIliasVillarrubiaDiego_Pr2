@@ -4,8 +4,8 @@ public abstract class AccesTerra extends Acces {
 
     private float longitud;
 
-    public AccesTerra(String nom, boolean accesibilitat, float longitud) {
-        super(nom, accesibilitat);
+    public AccesTerra(String nom, boolean estat, float longitud) {
+        super(nom, estat);
         this.longitud = longitud;
     }
 
@@ -15,5 +15,10 @@ public abstract class AccesTerra extends Acces {
 
     public void setLongitud(float longitud) {
         this.longitud = longitud;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Longitud: " + getLongitud();
     }
 }

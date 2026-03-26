@@ -4,8 +4,8 @@ public class CarreteraTerra extends AccesTerra {
 
     private float amplada;
 
-    public CarreteraTerra(String nom, boolean accesibilitat, float longitud, float amplada) {
-        super(nom, accesibilitat, longitud);
+    public CarreteraTerra(String nom, boolean estat, float longitud, float amplada) {
+        super(nom, estat, longitud);
         this.amplada = amplada;
     }
 
@@ -24,6 +24,6 @@ public class CarreteraTerra extends AccesTerra {
 
     @Override
     public String toString() {
-        return super.toString() + ", Longitud: " + getLongitud() + ", Amplada: " + this.amplada;
+        return super.toString() + ", Amplada: " + this.amplada;
     }
 }

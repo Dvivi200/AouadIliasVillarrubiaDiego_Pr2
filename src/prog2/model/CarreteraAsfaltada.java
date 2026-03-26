@@ -4,8 +4,8 @@ public class CarreteraAsfaltada extends AccesAsfalt {
 
     private float pes_maxim;
 
-    public CarreteraAsfaltada(String nom, boolean accesibilitat, float asfalt, float pes_maxim) {
-        super(nom, accesibilitat, asfalt);
+    public CarreteraAsfaltada(String nom, boolean estat, float asfalt, float pes_maxim) {
+        super(nom, estat, asfalt);
         this.pes_maxim = pes_maxim;
     }
 
@@ -24,7 +24,7 @@ public class CarreteraAsfaltada extends AccesAsfalt {
 
     @Override
     public String toString() {
-        return super.toString() + ", Asfalt" + getAsfalt() + ", Pes màxim: " + this.pes_maxim;
+        return super.toString() + ", Pes màxim: " + this.pes_maxim;
     }
 
 }

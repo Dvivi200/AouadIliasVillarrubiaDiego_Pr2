@@ -4,8 +4,8 @@ public abstract class AccesAsfalt extends Acces{
 
     private float asfalt;
 
-    public AccesAsfalt(String nom, boolean accesibilitat, float asfalt) {
-        super(nom, accesibilitat);
+    public AccesAsfalt(String nom, boolean estat, float asfalt) {
+        super(nom, estat);
         this.asfalt = asfalt;
     }
 
@@ -16,4 +16,10 @@ public abstract class AccesAsfalt extends Acces{
     public void setAsfalt(float asfalt){
         this.asfalt = asfalt;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Asfalt" + getAsfalt();
+    }
+
 }
