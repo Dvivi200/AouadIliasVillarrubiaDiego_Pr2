@@ -32,11 +32,11 @@ public abstract class Acces implements InAcces {
     }
 
     public void tancarAcces(){
-        accesibilitat = false;
+        estat = false;
     }
 
     public void obrirAcces(){
-        accesibilitat = true;
+        estat = true;
     }
 
     public void afegirAllotjament(Allotjament allotjament){

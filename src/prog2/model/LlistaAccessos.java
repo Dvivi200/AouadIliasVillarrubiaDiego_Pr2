@@ -34,9 +34,12 @@ public class LlistaAccessos implements InLlistaAccessos {
     }
 
     @Override
-    public void actualitzaEstatAccessos() throws ExcepcioCamping { //Pendent
+    public void actualitzaEstatAccessos() throws ExcepcioCamping {
         for(Acces a : llistaAccessos) {
             a.tancarAcces();
+            if(a.getAAllotjaments().containsAllotjamentOperatiu()){
+                a.obrirAcces();
+            }
         }
 
     }
