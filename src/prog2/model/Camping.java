@@ -300,27 +300,31 @@ public class Camping implements InCamping, Serializable {
 
     @Override
     public void save(String camiDesti) throws ExcepcioCamping {
-        Camping c = new Camping("Camping");
         File fitxer = new File(camiDesti);
-        try {
-            FileOutputStream fos = new FileOutputStream(fitxer);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(c);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        // Usamos try-with-resources para asegurar que se cierren los flujos automáticamente [4]
+        try (FileOutputStream fos = new FileOutputStream(fitxer);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
+            // Guardamos "this" (la instancia actual del camping) [1, 3]
+            oos.writeObject(this);
+
+        } catch (IOException e) {
+            // Lanzamos ExcepcioCamping en lugar de RuntimeException [4]
+            throw new ExcepcioCamping("Error en guardar les dades al fitxer: " + e.getMessage());
+        }
     }
 
-    static Camping load(String camiOrigen) throws ExcepcioCamping {
+    public static Camping load(String camiOrigen) throws ExcepcioCamping {
         File fitxer = new File(camiOrigen);
-        try {
-            FileInputStream fin = new FileInputStream(fitxer);
-            ObjectInputStream fout = new ObjectInputStream(fin);
-            Camping c = (Camping) fout.readObject();
-            return c;
+        try (FileInputStream fin = new FileInputStream(fitxer);
+             ObjectInputStream ois = new ObjectInputStream(fin)) {
+
+            // Leemos el objeto y hacemos el cast a Camping [5]
+            return (Camping) ois.readObject();
+
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            // Lanzamos ExcepcioCamping para que la vista lo gestione [4]
+            throw new ExcepcioCamping("Error en carregar les dades del fitxer: " + e.getMessage());
         }
     }
 }
