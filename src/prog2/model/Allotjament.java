@@ -78,7 +78,6 @@ public abstract class Allotjament implements InAllotjament {
 
     public void setEstat(boolean estat) {this.estat = estat;}
 
-    public boolean getEstat() {return estat;}
 }
 
 

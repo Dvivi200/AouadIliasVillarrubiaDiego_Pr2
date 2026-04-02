@@ -302,9 +302,9 @@ public class Camping implements InCamping, Serializable {
     public void save(String camiDesti) throws ExcepcioCamping {
         File fitxer = new File(camiDesti);
         // Usamos try-with-resources para asegurar que se cierren los flujos automáticamente [4]
-        try (FileOutputStream fos = new FileOutputStream(fitxer);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
+        try {
+            FileOutputStream fos = new FileOutputStream(fitxer);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             // Guardamos "this" (la instancia actual del camping) [1, 3]
             oos.writeObject(this);
 
@@ -316,9 +316,9 @@ public class Camping implements InCamping, Serializable {
 
     public static Camping load(String camiOrigen) throws ExcepcioCamping {
         File fitxer = new File(camiOrigen);
-        try (FileInputStream fin = new FileInputStream(fitxer);
-             ObjectInputStream ois = new ObjectInputStream(fin)) {
-
+        try {
+            FileInputStream fin = new FileInputStream(fitxer);
+            ObjectInputStream ois = new ObjectInputStream(fin);
             // Leemos el objeto y hacemos el cast a Camping [5]
             return (Camping) ois.readObject();
 

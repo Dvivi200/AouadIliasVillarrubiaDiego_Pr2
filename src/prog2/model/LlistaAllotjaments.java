@@ -29,7 +29,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
         for (Allotjament a : llistaAllotjaments) {
             if(a.isOperatiu() == estat) llista.append(a.toString()).append("\n");
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha allotjaments amb l'estat demanat");
+        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha allotjaments amb l'estat: " + estat);
         return llista.toString();
     }
 

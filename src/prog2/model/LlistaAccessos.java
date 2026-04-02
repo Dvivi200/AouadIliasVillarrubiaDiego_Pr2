@@ -29,7 +29,7 @@ public class LlistaAccessos implements InLlistaAccessos {
         for (Acces a : llistaAccessos) {
             if(a.getEstat() == estat) llista.append(a.toString()).append("\n");
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha accessos amb l'estat demanat");
+        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha accessos amb l'estat: " + estat);
         return llista.toString();
     }
 

@@ -15,7 +15,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
     public void afegirTascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) throws ExcepcioCamping {
         TascaManteniment tasca = new TascaManteniment(num, TascaManteniment.TipusTascaManteniment.valueOf(tipus), allotjament, data, dies);
         llistaTasquesManteniment.add(tasca);
-
+        tasca.getAllotjament().tancarAllotjament(tasca);
     }
 
     @Override
@@ -30,6 +30,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
         for (TascaManteniment a : llistaTasquesManteniment) {
             llista.append(a.toString()).append("\n");
         }
+        if(llista.isEmpty()) throw new ExcepcioCamping("Actualment no hi han tasques de manteniment actives.");
         return llista.toString();
     }
 
