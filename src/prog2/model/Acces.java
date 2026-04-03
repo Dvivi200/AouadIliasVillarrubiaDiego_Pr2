@@ -1,54 +1,58 @@
 package prog2.model;
 
-import prog2.vista.ExcepcioCamping;
-
-import java.util.ArrayList;
-
 public abstract class Acces implements InAcces {
-    private String nom;
-    private boolean accesibilitat;
-    private boolean estat;
-    private LlistaAllotjaments llistaAllotjaments;
+
+    protected String nom;
+    protected boolean estat; // true = obert
+    protected LlistaAllotjaments allotjaments;
 
     public Acces(String nom, boolean estat) {
         this.nom = nom;
-        this.accesibilitat = isAccessibilitat();
         this.estat = estat;
-        this.llistaAllotjaments = new LlistaAllotjaments();
+        this.allotjaments = new LlistaAllotjaments();
     }
 
-    public String getNom(){
-        return nom;
-    }
-
-    public abstract boolean isAccessibilitat();
-
-    public boolean getEstat(){
-        return estat;
-    }
-
-    public LlistaAllotjaments getAAllotjaments(){
-        return llistaAllotjaments;
-    }
-
-    public void tancarAcces(){
-        estat = false;
-    }
-
-    public void obrirAcces(){
-        estat = true;
-    }
-
-    public void afegirAllotjament(Allotjament allotjament){
+    @Override
+    public void afegirAllotjament(Allotjament allotjament) {
         try {
-            llistaAllotjaments.afegirAllotjament(allotjament);
-        } catch (ExcepcioCamping e) {
-            throw new RuntimeException(e);
+            allotjaments.afegirAllotjament(allotjament);
+        } catch (Exception e) {
+            // no fem res
         }
     }
 
-    public String toString(){
-        return "Nom: " + nom + ", Accesible: " + accesibilitat + ", Estat: " + estat;
+    @Override
+    public void tancarAcces() {
+        estat = false;
     }
 
+    @Override
+    public void obrirAcces() {
+        estat = true;
+    }
+
+    @Override
+    public String getNom() {
+        return nom;
+    }
+
+    @Override
+    public boolean getEstat() {
+        return estat;
+    }
+
+    @Override
+    public LlistaAllotjaments getAAllotjaments() {
+        return allotjaments;
+    }
+
+    @Override
+    public abstract boolean isAccessibilitat();
+
+    @Override
+    public String toString() {
+        return "Nom: " + nom +
+                ", Obert: " + estat +
+                ", Accessibilitat: " + isAccessibilitat();
+    }
 }

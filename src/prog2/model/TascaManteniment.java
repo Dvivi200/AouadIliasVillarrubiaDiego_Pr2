@@ -2,83 +2,47 @@ package prog2.model;
 
 public class TascaManteniment implements InTascaManteniment {
 
+    public enum TipusTascaManteniment {
+        Reparacio,
+        Neteja,
+        RevisioTecnica,
+        Desinfeccio
+    }
+
     private int num;
+    private TipusTascaManteniment tipus;
     private Allotjament allotjament;
     private String data;
-    private TipusTascaManteniment tipus;
     private int dies;
 
-    public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
+    public TascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) {
         this.num = num;
-        this.tipus = tipus;
+        this.tipus = TipusTascaManteniment.valueOf(tipus);
         this.allotjament = allotjament;
         this.data = data;
         this.dies = dies;
     }
 
-    public static enum TipusTascaManteniment {
-        Reparacio,
-        Neteja,
-        RevisioTecnica,
-        Desinfeccio
-    };
-    @Override
-    public int getNum() {
-        return num;
-    }
+    @Override public int getNum() { return num; }
+    @Override public TipusTascaManteniment getTipus() { return tipus; }
+    @Override public Allotjament getAllotjament() { return allotjament; }
+    @Override public String getData() { return data; }
+    @Override public int getDies() { return dies; }
 
-    @Override
-    public TascaManteniment.TipusTascaManteniment getTipus() {
-        return tipus;
-    }
-
-    @Override
-    public Allotjament getAllotjament() {
-        return allotjament;
-    }
-
-    @Override
-    public String getData() {
-        return data;
-    }
-
-    @Override
-    public int getDies() {
-        return dies;
-    }
-
-    @Override
-    public void setNum(int num_) {
-        this.num = num_;
-    }
-
-    @Override
-    public void setTipus(TascaManteniment.TipusTascaManteniment tipus_) {
-        this.tipus = tipus_;
-    }
-
-    @Override
-    public void setAllotjament(Allotjament allotjament_) {
-        this.allotjament = allotjament_;
-    }
-
-    @Override
-    public void setData(String data_) {
-        this.data = data_;
-    }
-
-    @Override
-    public void setDies(int dies_) {
-        this.dies = dies_;
-    }
-
-    public String toString(){
-        return "Numero de tasca: " + num + ", tipus de tasca: " + tipus + ", allotjament de la tasca: " +
-                allotjament + ", data: " + data + ", durada de la tasca: " + dies + ". ";
-    }
+    @Override public void setNum(int num_) { num = num_; }
+    @Override public void setTipus(TipusTascaManteniment tipus_) { tipus = tipus_; }
+    @Override public void setAllotjament(Allotjament a) { allotjament = a; }
+    @Override public void setData(String d) { data = d; }
+    @Override public void setDies(int d) { dies = d; }
 
     @Override
     public String getIluminacioAllotjament() {
-        return allotjament.getIluminacio();
+        switch (tipus) {
+            case Reparacio: return "50%";
+            case Neteja: return "100%";
+            case RevisioTecnica: return "50%";
+            case Desinfeccio: return "0%";
+        }
+        return "100%";
     }
 }

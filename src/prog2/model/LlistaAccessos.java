@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
 public class LlistaAccessos implements InLlistaAccessos {
@@ -14,7 +13,6 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        if (acc == null) throw new ExcepcioCamping("No s'ha pogut afegir cap acces");
         llistaAccessos.add(acc);
     }
 
@@ -25,44 +23,60 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        StringBuffer llista = new StringBuffer();
+
+        String res = "";
+
         for (Acces a : llistaAccessos) {
-            if(a.getEstat() == estat) llista.append(a.toString()).append("\n");
+            if (a.getEstat() == estat) {
+                res += a + "\n";
+            }
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha accessos amb l'estat: " + estat);
-        return llista.toString();
+
+        if (res.isEmpty()) {
+            throw new ExcepcioCamping("No hi ha accessos amb aquest estat");
+        }
+
+        return res;
     }
 
     @Override
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        for(Acces a : llistaAccessos) {
-            a.tancarAcces();
-            if(a.getAAllotjaments().containsAllotjamentOperatiu()){
-                a.obrirAcces();
+
+        for (Acces acces : llistaAccessos) {
+
+            acces.tancarAcces(); // primer tanquem tots
+
+            if (acces.getAAllotjaments().containsAllotjamentOperatiu()) {
+                acces.obrirAcces();
             }
         }
-
     }
 
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
-        int comptador = 0;
-        for(Acces acc : llistaAccessos){
-            if(!acc.isAccessibilitat()){
-                comptador++;
+
+        int count = 0;
+
+        for (Acces a : llistaAccessos) {
+            if (!a.isAccessibilitat()) {
+                count++;
             }
         }
-        return comptador;
+
+        return count;
     }
 
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
-        float metres = 0;
-        for(Acces acc : llistaAccessos){
-            if(acc instanceof AccesTerra){
-                metres += ((AccesTerra) acc).getLongitud();
+
+        float total = 0;
+
+        for (Acces a : llistaAccessos) {
+            if (a instanceof AccesTerra) {
+                total += ((AccesTerra) a).getLongitud();
             }
         }
-        return metres;
+
+        return total;
     }
 }

@@ -2,26 +2,23 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
-import java.io.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
+public class Camping implements InCamping {
 
-public class Camping implements InCamping, Serializable {
-
-    private String nomCamping;
+    private String nom;
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
-    private LlistaTasquesManteniment llistaTasquesManteniment;
+    private LlistaTasquesManteniment tasques;
 
-    public Camping(String nomCamping) {
-        this.nomCamping = nomCamping;
-        this.llistaAllotjaments = new LlistaAllotjaments();
-        this.llistaAccessos = new LlistaAccessos();
-        this.llistaTasquesManteniment = new LlistaTasquesManteniment();
+    public Camping(String nom) {
+        this.nom = nom;
+        llistaAllotjaments = new LlistaAllotjaments();
+        llistaAccessos = new LlistaAccessos();
+        tasques = new LlistaTasquesManteniment();
     }
+
     @Override
     public String getNomCamping() {
-        return nomCamping;
+        return nom;
     }
 
     @Override
@@ -30,45 +27,45 @@ public class Camping implements InCamping, Serializable {
     }
 
     @Override
-    public String llistarAccessos(boolean infoEstat) throws ExcepcioCamping {
-        return llistaAccessos.llistarAccessos(infoEstat);
+    public String llistarAccessos(boolean estat) throws ExcepcioCamping {
+        return llistaAccessos.llistarAccessos(estat);
     }
 
     @Override
     public String llistarTasquesManteniment() throws ExcepcioCamping {
-        return llistaTasquesManteniment.llistarTasquesManteniment();
+        return tasques.llistarTasquesManteniment();
     }
 
     @Override
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
-        llistaTasquesManteniment.afegirTascaManteniment(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data, dies);
-        llistaAccessos.actualitzaEstatAccessos();
 
+        Allotjament a = llistaAllotjaments.getAllotjament(idAllotjament);
+
+        tasques.afegirTascaManteniment(num, tipus, a, data, dies);
+
+        llistaAccessos.actualitzaEstatAccessos();
     }
 
     @Override
     public void completarTascaManteniment(int num) throws ExcepcioCamping {
-        llistaTasquesManteniment.completarTascaManteniment(llistaTasquesManteniment.getTascaManteniment(num));
+
+        TascaManteniment t = tasques.getTascaManteniment(num);
+
+        tasques.completarTascaManteniment(t);
+
         llistaAccessos.actualitzaEstatAccessos();
     }
 
     @Override
-    public int calculaAccessosNoAccessibles() {
-        try {
-            return llistaAccessos.calculaAccessosNoAccessibles();
-        } catch (ExcepcioCamping e) {
-            throw new RuntimeException(e);
-        }
+    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
+        return llistaAccessos.calculaAccessosNoAccessibles();
     }
 
     @Override
-    public float calculaMetresTerra() {
-        try {
-            return llistaAccessos.calculaMetresTerra();
-        } catch (ExcepcioCamping e) {
-            throw new RuntimeException(e);
-        }
+    public float calculaMetresTerra() throws ExcepcioCamping {
+        return llistaAccessos.calculaMetresTerra();
     }
+
 
     @Override
     public void inicialitzaDadesCamping() {

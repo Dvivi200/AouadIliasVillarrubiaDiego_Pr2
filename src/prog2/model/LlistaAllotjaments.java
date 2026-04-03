@@ -62,4 +62,6 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
         }
         throw new ExcepcioCamping("Allotjament no trobat");
     }
+
+    public int tamany(){ return llistaAllotjaments.size(); }
 }

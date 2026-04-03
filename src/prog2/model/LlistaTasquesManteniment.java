@@ -1,46 +1,66 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
 public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
 
-    private ArrayList<TascaManteniment> llistaTasquesManteniment;
+    private ArrayList<TascaManteniment> llista;
 
-    public LlistaTasquesManteniment(){
-        llistaTasquesManteniment = new ArrayList<>();
+    public LlistaTasquesManteniment() {
+        llista = new ArrayList<>();
     }
+
     @Override
     public void afegirTascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) throws ExcepcioCamping {
-        TascaManteniment tasca = new TascaManteniment(num, TascaManteniment.TipusTascaManteniment.valueOf(tipus), allotjament, data, dies);
-        llistaTasquesManteniment.add(tasca);
-        tasca.getAllotjament().tancarAllotjament(tasca);
+
+        for (TascaManteniment t : llista) {
+            if (t.getAllotjament().equals(allotjament)) {
+                throw new ExcepcioCamping("Ja existeix una tasca per aquest allotjament");
+            }
+        }
+
+        TascaManteniment t = new TascaManteniment(num, tipus, allotjament, data, dies);
+
+        allotjament.tancarAllotjament(t);
+
+        llista.add(t);
     }
 
     @Override
     public void completarTascaManteniment(TascaManteniment tasca) throws ExcepcioCamping {
-        llistaTasquesManteniment.remove(tasca);
+
+        if (!llista.contains(tasca)) {
+            throw new ExcepcioCamping("Tasca no trobada");
+        }
+
         tasca.getAllotjament().obrirAllotjament();
+
+        llista.remove(tasca);
     }
 
     @Override
     public String llistarTasquesManteniment() throws ExcepcioCamping {
-        StringBuffer llista = new StringBuffer();
-        for (TascaManteniment a : llistaTasquesManteniment) {
-            llista.append(a.toString()).append("\n");
+
+        if (llista.isEmpty()) {
+            throw new ExcepcioCamping("No hi ha tasques");
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("Actualment no hi han tasques de manteniment actives.");
-        return llista.toString();
+
+        String res = "";
+        for (TascaManteniment t : llista) {
+            res += t.getNum() + " - " + t.getTipus() + "\n";
+        }
+
+        return res;
     }
 
     @Override
     public TascaManteniment getTascaManteniment(int num) throws ExcepcioCamping {
-        for(TascaManteniment tasca : llistaTasquesManteniment){
-            if(tasca.getNum() == num){
-                return tasca;
-            }
+
+        for (TascaManteniment t : llista) {
+            if (t.getNum() == num) return t;
         }
-        throw new ExcepcioCamping("No s'ha trobat cap tasca amb aquest identificador.");
+
+        throw new ExcepcioCamping("Tasca no trobada");
     }
 }
