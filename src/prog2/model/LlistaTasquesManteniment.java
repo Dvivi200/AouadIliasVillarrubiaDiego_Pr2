@@ -48,7 +48,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
 
         String res = "";
         for (TascaManteniment t : llista) {
-            res += t.getNum() + " - " + t.getTipus() + "\n";
+            res += t.toString() + "\n";
         }
 
         return res;

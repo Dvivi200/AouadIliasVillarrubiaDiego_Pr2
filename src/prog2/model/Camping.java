@@ -2,6 +2,8 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.*;
+
 public class Camping implements InCamping {
 
     private String nom;

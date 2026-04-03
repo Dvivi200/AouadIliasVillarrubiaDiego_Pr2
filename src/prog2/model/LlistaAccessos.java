@@ -28,7 +28,7 @@ public class LlistaAccessos implements InLlistaAccessos {
 
         for (Acces a : llistaAccessos) {
             if (a.getEstat() == estat) {
-                res += a + "\n";
+                res += a.toString() + "\n";
             }
         }
 

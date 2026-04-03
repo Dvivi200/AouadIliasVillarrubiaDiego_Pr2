@@ -45,4 +45,9 @@ public class TascaManteniment implements InTascaManteniment {
         }
         return "100%";
     }
+
+    public String toString()
+    {
+        return "Nº de tasca: " + num + ", tipus: " + tipus + ", allotjament: " + allotjament + ", data" + data + ",  dies previstos: " + dies + ".";
+    }
 }
