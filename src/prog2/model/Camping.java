@@ -17,7 +17,7 @@ public class Camping implements InCamping, Serializable {
         this.nomCamping = nomCamping;
         this.llistaAllotjaments = new LlistaAllotjaments();
         this.llistaAccessos = new LlistaAccessos();
-        llistaTasquesManteniment = new LlistaTasquesManteniment();
+        this.llistaTasquesManteniment = new LlistaTasquesManteniment();
     }
     @Override
     public String getNomCamping() {
@@ -42,12 +42,14 @@ public class Camping implements InCamping, Serializable {
     @Override
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
         llistaTasquesManteniment.afegirTascaManteniment(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data, dies);
+        llistaAccessos.actualitzaEstatAccessos();
 
     }
 
     @Override
     public void completarTascaManteniment(int num) throws ExcepcioCamping {
         llistaTasquesManteniment.completarTascaManteniment(llistaTasquesManteniment.getTascaManteniment(num));
+        llistaAccessos.actualitzaEstatAccessos();
     }
 
     @Override

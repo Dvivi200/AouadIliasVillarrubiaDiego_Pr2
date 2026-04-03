@@ -25,9 +25,7 @@ public class BungalowPremium extends Bungalow{
     //toString de la subclasse
     @Override
     public String toString() {
-        return super.toString() + "Bungalow Premium{places de Parking=" + getPlacesParking() +
-                ", terrassa=" + isTerrassa() + ", tv=" + isTv() + ", aire fred=" + isAireFred() +
-                ", serveis Extra=" + serveisExtra + ", Codi Wifi=" + codiWifi + "}";
+        return super.toString() + "Bungalow Premium{serveis Extra=" + serveisExtra + ", Codi Wifi=" + codiWifi + "}. ";
     }
 
     //Getters i setters

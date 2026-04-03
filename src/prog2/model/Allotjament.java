@@ -48,8 +48,8 @@ public abstract class Allotjament implements InAllotjament {
         this.estat = false;
         switch (tasca.getTipus()) {
             case Reparacio, RevisioTecnica -> il_luminacio = "50%";
-            case Neteja ->  il_luminacio = "100%";
-            case Desinfeccio ->   il_luminacio = "0%";
+            case Neteja -> il_luminacio = "100%";
+            case Desinfeccio -> il_luminacio = "0%";
         }
     }
 
