@@ -75,7 +75,8 @@ public class VistaCamping {
                     case AFEGIR_TASCA:
                         // Sol·licita les dades necessàries per crear una tasca
                         System.out.print("Número de tasca: ");
-                        int numT = Integer.parseInt(sc.nextLine());
+                        int numT = sc.nextInt();
+                        sc.nextLine();
                         System.out.print("ID allotjament (nom): ");
                         String idA = sc.nextLine();
                         System.out.print("Tipus (Reparacio, Neteja, RevisioTecnica, Desinfeccio): ");
@@ -83,7 +84,8 @@ public class VistaCamping {
                         System.out.print("Data: ");
                         String data = sc.nextLine();
                         System.out.print("Dies previstos: ");
-                        int dies = Integer.parseInt(sc.nextLine());
+                        int dies = sc.nextInt();
+                        sc.nextLine();
 
                         camping.afegirTascaManteniment(numT, tipus, idA, data, dies);
                         System.out.println("Tasca afegida correctament.");
@@ -93,8 +95,9 @@ public class VistaCamping {
                         // Mostra les tasques abans de demanar el número
                         System.out.println(camping.llistarTasquesManteniment());
                         System.out.print("Introdueix el número de la tasca a completar: ");
-                        int idCompletar = Integer.parseInt(sc.nextLine());
-                        camping.completarTascaManteniment(idCompletar);
+                        int idCompletar = sc.nextInt();
+                        sc.nextLine();
+                        camping.completarTascaManteniment(idCompletar); // [11]
                         System.out.println("Tasca completada correctament.");
                         break;
 
@@ -124,6 +127,9 @@ public class VistaCamping {
 
                     case SORTIR:
                         System.out.println("Sortint de l'aplicació...");
+                        break;
+
+                    default:
                         break;
                 }
             } catch (ExcepcioCamping e) {

@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
 // Classe que gestiona una llista d'allotjaments dins del càmping
@@ -17,57 +16,68 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
     // Afegeix un allotjament a la llista, llençant excepció si és null
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-        if (allotjament == null) throw new ExcepcioCamping("No s'ha pogut afegir cap allotjament");
-        llistaAllotjaments.add(allotjament);
+
+        for (Allotjament a : llista) {
+            if (a.getId().equals(allotjament.getId())) {
+                throw new ExcepcioCamping("Ja existeix un allotjament amb aquest id");
+            }
+        }
+
+        llista.add(allotjament);
     }
 
     // Buida la llista d'allotjaments
     @Override
     public void buidar() {
-        llistaAllotjaments.clear();
+        llista.clear();
     }
 
     // Retorna un String amb els allotjaments que tenen l'estat indicat
     @Override
     public String llistarAllotjaments(boolean estat) throws ExcepcioCamping {
-        StringBuffer llista = new StringBuffer();
-        for (Allotjament a : llistaAllotjaments) {
-            if(a.isOperatiu() == estat) llista.append(a.toString()).append("\n");
+
+        String res = "";
+
+        for (Allotjament a : llista) {
+            if (a.isOperatiu() == estat) {
+                res += a.toString() + "\n";
+            }
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha allotjaments amb l'estat demanat");
-        return llista.toString();
+
+        if (res.isEmpty()) {
+            throw new ExcepcioCamping("No hi ha allotjaments amb aquest estat");
+        }
+
+        return res;
     }
 
     // Comprova si hi ha almenys un allotjament operatiu
     @Override
     public boolean containsAllotjamentOperatiu() {
-        boolean op = false;
 
-        for(int i = 0; i < llistaAllotjaments.size() && !op; i++){
-            if(llistaAllotjaments.get(i).isOperatiu())
-                op = true;
+        for (Allotjament a : llista) {
+            if (a.isOperatiu()) return true;
         }
 
-        return op;
+        return false;
     }
 
     // Comprova si la llista conté un allotjament concret
     @Override
     public boolean contains(Allotjament allotjament) {
-        for(Allotjament all : llistaAllotjaments){
-            if(all.equals(allotjament))
-                return true;
-        }
-        return false;
+        return llista.contains(allotjament);
     }
 
     // Retorna un allotjament segons el seu id, llençant excepció si no es troba
     @Override
     public Allotjament getAllotjament(String id) throws ExcepcioCamping {
-        for(Allotjament allotjament : llistaAllotjaments){
-            if(allotjament.getId().equals(id))
-                return allotjament;
+
+        for (Allotjament a : llista) {
+            if (a.getId().equals(id)) {
+                return a;
+            }
         }
+
         throw new ExcepcioCamping("Allotjament no trobat");
     }
 }

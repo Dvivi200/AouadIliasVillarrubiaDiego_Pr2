@@ -1,9 +1,5 @@
 package prog2.model;
 
-import prog2.vista.ExcepcioCamping;
-
-import java.util.ArrayList;
-
 public abstract class Acces implements InAcces {
     private String nom;
     private boolean accesibilitat; // Indica si l'accés és accessible (definit a les subclases)
@@ -15,11 +11,16 @@ public abstract class Acces implements InAcces {
         this.nom = nom;
         this.accesibilitat = isAccessibilitat(); // Valor definit per la subclasse concreta
         this.estat = estat;
-        this.llistaAllotjaments = new LlistaAllotjaments();
+        this.allotjaments = new LlistaAllotjaments();
     }
 
-    public String getNom(){
-        return nom;
+    @Override
+    public void afegirAllotjament(Allotjament allotjament) {
+        try {
+            allotjaments.afegirAllotjament(allotjament);
+        } catch (Exception e) {
+            // no fem res
+        }
     }
 
     // Mètode abstracte: cada subclasse defineix si és accessible
@@ -58,4 +59,8 @@ public abstract class Acces implements InAcces {
         return "Nom: " + nom + ", Accesible: " + accesibilitat + ", Estat: " + estat;
     }
 
+    @Override
+    public String getNom() {
+        return nom;
+    }
 }

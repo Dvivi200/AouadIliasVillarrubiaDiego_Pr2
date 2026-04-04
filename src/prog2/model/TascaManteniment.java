@@ -8,23 +8,23 @@ public class TascaManteniment implements InTascaManteniment {
     private String data; // Data d'inici de la tasca
     private TipusTascaManteniment tipus; // Tipus de tasca
     private int dies; // Durada de la tasca en dies
-
-    // Constructor: inicialitza tots els atributs de la tasca
-    public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
-        this.num = num;
-        this.tipus = tipus;
-        this.allotjament = allotjament;
-        this.data = data;
-        this.dies = dies;
-    }
-
+    
     // Enum amb els tipus de tasques possibles
-    public static enum TipusTascaManteniment {
+    public enum TipusTascaManteniment {
         Reparacio,
         Neteja,
         RevisioTecnica,
         Desinfeccio
     };
+
+    // Constructor: inicialitza tots els atributs de la tasca
+    public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
+        this.num = num;
+        this.tipus = TipusTascaManteniment.valueOf(tipus);
+        this.allotjament = allotjament;
+        this.data = data;
+        this.dies = dies;
+    }
 
     // Getters i setters dels atributs
     @Override
@@ -45,11 +45,6 @@ public class TascaManteniment implements InTascaManteniment {
     @Override
     public String getData() {
         return data;
-    }
-
-    @Override
-    public int getDies() {
-        return dies;
     }
 
     @Override
@@ -77,15 +72,21 @@ public class TascaManteniment implements InTascaManteniment {
         this.dies = dies_;
     }
 
-    // Representació en String de la tasca de manteniment
-    public String toString(){
-        return "Numero de tasca: " + num + ", tipus de tasca: " + tipus + ", allotjament de la tasca: " +
-                allotjament + ", data: " + data + ", durada de la tasca: " + dies + ". ";
-    }
-
     // Retorna la il·luminació de l'allotjament associat a la tasca
     @Override
     public String getIluminacioAllotjament() {
-        return allotjament.getIluminacio();
+        switch (tipus) {
+            case Reparacio: return "50%";
+            case Neteja: return "100%";
+            case RevisioTecnica: return "50%";
+            case Desinfeccio: return "0%";
+        }
+        return "100%";
+    }
+
+    // Representació en String de la tasca de manteniment
+    public String toString()
+    {
+        return "Nº de tasca: " + num + ", tipus: " + tipus + ", allotjament: " + allotjament + ", data" + data + ",  dies previstos: " + dies + ".";
     }
 }

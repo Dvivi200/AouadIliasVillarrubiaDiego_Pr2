@@ -44,13 +44,11 @@ public abstract class Allotjament implements InAllotjament {
         return estat;
     }
 
+    public void setEstat(boolean estat) {this.estat = estat;}
+
     public void tancarAllotjament(TascaManteniment tasca){
         this.estat = false;
-        switch (tasca.getTipus()) {
-            case Reparacio, RevisioTecnica -> il_luminacio = "50%";
-            case Neteja ->  il_luminacio = "100%";
-            case Desinfeccio ->   il_luminacio = "0%";
-        }
+        this.il_luminacio = tasca.getIluminacioAllotjament();
     }
 
     public void obrirAllotjament(){
@@ -76,9 +74,6 @@ public abstract class Allotjament implements InAllotjament {
         this.il_luminacio = il_luminacio;
     }
 
-    public void setEstat(boolean estat) {this.estat = estat;}
-
-    public boolean getEstat() {return estat;}
 }
 
 

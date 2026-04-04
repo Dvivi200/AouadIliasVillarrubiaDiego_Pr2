@@ -27,7 +27,7 @@ public class Bungalow extends Casa{
     @Override
     public String toString() {
         return super.toString() + "Bungalow{places de Parking=" + placesParking + ", terrassa="
-                + terrassa + ", tv=" + tv + ", aire fred=" + aireFred + "}";
+                + terrassa + ", tv=" + tv + ", aire fred=" + aireFred + "}. ";
     }
 
     //Getters i setters

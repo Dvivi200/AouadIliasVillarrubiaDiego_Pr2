@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
 // Classe que gestiona una llista d'accessos del càmping
@@ -17,7 +16,6 @@ public class LlistaAccessos implements InLlistaAccessos {
     // Afegeix un accés a la llista, llençant excepció si és null
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        if (acc == null) throw new ExcepcioCamping("No s'ha pogut afegir cap acces");
         llistaAccessos.add(acc);
     }
 
@@ -30,12 +28,20 @@ public class LlistaAccessos implements InLlistaAccessos {
     // Retorna un String amb els accessos que tenen l'estat indicat
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        StringBuffer llista = new StringBuffer();
+
+        String res = "";
+
         for (Acces a : llistaAccessos) {
-            if(a.getEstat() == estat) llista.append(a.toString()).append("\n");
+            if (a.getEstat() == estat) {
+                res += a.toString() + "\n";
+            }
         }
-        if(llista.isEmpty()) throw new ExcepcioCamping("No hi ha accessos amb l'estat demanat");
-        return llista.toString();
+
+        if (res.isEmpty()) {
+            throw new ExcepcioCamping("No hi ha accessos amb aquest estat");
+        }
+
+        return res;
     }
 
     // Actualitza l'estat de tots els accessos segons si tenen allotjaments operatius
@@ -52,13 +58,16 @@ public class LlistaAccessos implements InLlistaAccessos {
     // Calcula el nombre d'accessos no accessibles
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
-        int comptador = 0;
-        for(Acces acc : llistaAccessos){
-            if(!acc.isAccessibilitat()){
-                comptador++;
+
+        int count = 0;
+
+        for (Acces a : llistaAccessos) {
+            if (!a.isAccessibilitat()) {
+                count++;
             }
         }
-        return comptador;
+
+        return count;
     }
 
     // Calcula el total de metres de camins de terra
@@ -70,6 +79,7 @@ public class LlistaAccessos implements InLlistaAccessos {
                 metres += ((AccesTerra) acc).getLongitud();
             }
         }
-        return metres;
+
+        return total;
     }
 }
