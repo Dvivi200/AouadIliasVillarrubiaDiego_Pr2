@@ -1,6 +1,7 @@
 package prog2.model;
+import java.io.Serializable;
 
-public class BungalowPremium extends Bungalow{
+public class BungalowPremium extends Bungalow implements Serializable {
     private boolean serveisExtra;
     private String codiWifi;
 

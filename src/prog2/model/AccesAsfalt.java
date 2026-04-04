@@ -1,6 +1,7 @@
 package prog2.model;
+import java.io.Serializable;
 
-public abstract class AccesAsfalt extends Acces{
+public abstract class AccesAsfalt extends Acces implements Serializable {
 
     private float asfalt; // Quantitat d'asfalt de l'accés (per exemple metres quadrats o gruix)
 

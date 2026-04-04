@@ -1,7 +1,8 @@
 package prog2.model;
+import java.io.Serializable;
 
 // Classe que representa una tasca de manteniment d'un allotjament
-public class TascaManteniment implements InTascaManteniment {
+public class TascaManteniment implements InTascaManteniment, Serializable {
 
     private int num; // Identificador únic de la tasca
     private Allotjament allotjament; // Allotjament associat a la tasca

@@ -1,10 +1,11 @@
 package prog2.model;
+import java.io.Serializable;
 
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
 // Classe que gestiona una llista d'allotjaments dins del càmping
-public class LlistaAllotjaments implements InLlistaAllotjaments {
+public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
     private ArrayList<Allotjament> llistaAllotjaments; // Llista que conté tots els allotjaments
 

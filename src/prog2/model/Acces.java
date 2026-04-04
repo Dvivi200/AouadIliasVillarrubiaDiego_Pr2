@@ -1,8 +1,8 @@
 package prog2.model;
-
+import java.io.Serializable;
 import prog2.vista.ExcepcioCamping;
 
-public abstract class Acces implements InAcces {
+public abstract class Acces implements InAcces, Serializable {
     private String nom;
     private boolean accesibilitat; // Indica si l'accés és accessible (definit a les subclases)
     private boolean estat; // Estat actual de l'accés: obert (true) o tancat (false)

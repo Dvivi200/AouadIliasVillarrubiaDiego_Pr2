@@ -21,7 +21,7 @@ public class TascaMantenimentTest {
     @Test
     void testConstructor() {
         assertEquals(1, tasca.getNum());
-        assertEquals("Reparacio", tasca.getTipus());
+        assertEquals(TipusTascaManteniment.Reparacio, tasca.getTipus());
         assertEquals(allotjament, tasca.getAllotjament());
         assertEquals("2024-03-25", tasca.getData());
         assertEquals(4, tasca.getDies());

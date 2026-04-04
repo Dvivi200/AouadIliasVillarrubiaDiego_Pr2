@@ -1,6 +1,7 @@
 package prog2.model;
+import java.io.Serializable;
 
-public abstract class AccesTerra extends Acces {
+public abstract class AccesTerra extends Acces implements Serializable {
 
     private float longitud; // Longitud del camí de terra de l'accés
 

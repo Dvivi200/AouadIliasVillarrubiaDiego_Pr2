@@ -1,6 +1,7 @@
 package prog2.model;
+import java.io.Serializable;
 
-public class MobilHome extends Casa{
+public class MobilHome extends Casa implements Serializable {
     private boolean terrassaBarbacoa;
 
     //Constructor

@@ -1,7 +1,8 @@
 package prog2.model;
+import java.io.Serializable;
 
 // Classe concreta que representa una carretera de terra dins del càmping
-public class CarreteraTerra extends AccesTerra {
+public class CarreteraTerra extends AccesTerra implements Serializable {
 
     private float amplada; // Amplada de la carretera de terra
 

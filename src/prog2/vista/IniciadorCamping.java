@@ -1,7 +1,5 @@
 package prog2.vista;
 
-import prog2.model.VistaCamping;
-
 /**
  *
  * @author lauraigual

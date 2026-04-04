@@ -1,7 +1,8 @@
 package prog2.model;
+import java.io.Serializable;
 
 // Classe concreta que representa una carretera asfaltada dins del càmping
-public class CarreteraAsfaltada extends AccesAsfalt {
+public class CarreteraAsfaltada extends AccesAsfalt implements Serializable {
 
     private float pes_maxim; // Pes màxim suportat per la carretera (per vehicles)
 

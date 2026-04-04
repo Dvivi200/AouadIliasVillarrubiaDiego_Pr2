@@ -1,10 +1,11 @@
 package prog2.model;
+import java.io.Serializable;
 
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
 // Classe que gestiona la llista de tasques de manteniment del càmping
-public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
+public class LlistaTasquesManteniment implements InLlistaTasquesManteniment, Serializable {
 
     private ArrayList<TascaManteniment> llistaTasquesManteniment; // Llista que conté totes les tasques de manteniment
 
@@ -29,6 +30,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
                 dies
         );
         llistaTasquesManteniment.add(tasca);
+        tasca.getAllotjament().tancarAllotjament(tasca);
     }
 
     // Marca una tasca com completada: la elimina de la llista i obre l'allotjament associat

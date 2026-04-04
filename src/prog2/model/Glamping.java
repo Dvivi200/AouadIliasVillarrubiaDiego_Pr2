@@ -1,6 +1,7 @@
 package prog2.model;
+import java.io.Serializable;
 
-public class Glamping extends Casa{
+public class Glamping extends Casa implements Serializable {
     private String material;
     private boolean casaMascota;
 

@@ -1,8 +1,6 @@
-package prog2.model;
+package prog2.vista;
 
-import prog2.vista.ExcepcioCamping;
-import prog2.vista.ExempleMenu;
-import prog2.vista.Menu;
+import prog2.model.*;
 
 import java.util.Scanner;
 
@@ -24,7 +22,11 @@ public class VistaCamping {
     public VistaCamping(String nom) {
         this.nom = nom;
         this.camping = new Camping(nom);
-        camping.inicialitzaDadesCamping(); // Omple el càmping amb dades d'exemple
+        try {
+            camping.inicialitzaDadesCamping(); // Omple el càmping amb dades d'exemple
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Mètode principal que gestiona el bucle del menú i les interaccions
@@ -53,8 +55,10 @@ public class VistaCamping {
 
                 switch (opcio) {
                     case LLISTAR_TOTS:
-                        System.out.println(camping.llistarAllotjaments(true));
-                        System.out.println(camping.llistarAllotjaments(false));
+                        try { System.out.println(camping.llistarAllotjaments(true)); }
+                        catch (ExcepcioCamping e) { System.out.println("No hi ha allotjaments operatius."); }
+                        try { System.out.println(camping.llistarAllotjaments(false)); }
+                        catch (ExcepcioCamping e) { System.out.println("No hi ha allotjaments no operatius."); }
                         break;
                     case LLISTAR_OPERATIUS:
                         System.out.println(camping.llistarAllotjaments(true));
