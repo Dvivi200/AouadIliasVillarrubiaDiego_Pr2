@@ -80,6 +80,6 @@ public class LlistaAccessos implements InLlistaAccessos {
             }
         }
 
-        return total;
+        return metres;
     }
 }

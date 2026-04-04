@@ -16,15 +16,6 @@ public abstract class Acces implements InAcces {
         this.llistaAllotjaments = new LlistaAllotjaments();
     }
 
-    @Override
-    public void afegirAllotjament(Allotjament allotjament) {
-        try {
-            llistaAllotjaments.afegirAllotjament(allotjament);
-        } catch (Exception e) {
-            // no fem res
-        }
-    }
-
     // Mètode abstracte: cada subclasse defineix si és accessible
     public abstract boolean isAccessibilitat();
 
@@ -52,7 +43,7 @@ public abstract class Acces implements InAcces {
         try {
             llistaAllotjaments.afegirAllotjament(allotjament);
         } catch (ExcepcioCamping e) {
-            throw new RuntimeException(e);
+
         }
     }
 

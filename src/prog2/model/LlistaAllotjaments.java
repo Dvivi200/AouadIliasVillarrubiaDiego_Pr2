@@ -17,19 +17,19 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
 
-        for (Allotjament a : llista) {
+        for (Allotjament a : llistaAllotjaments) {
             if (a.getId().equals(allotjament.getId())) {
                 throw new ExcepcioCamping("Ja existeix un allotjament amb aquest id");
             }
         }
 
-        llista.add(allotjament);
+        llistaAllotjaments.add(allotjament);
     }
 
     // Buida la llista d'allotjaments
     @Override
     public void buidar() {
-        llista.clear();
+        llistaAllotjaments.clear();
     }
 
     // Retorna un String amb els allotjaments que tenen l'estat indicat
@@ -38,7 +38,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
         String res = "";
 
-        for (Allotjament a : llista) {
+        for (Allotjament a : llistaAllotjaments) {
             if (a.isOperatiu() == estat) {
                 res += a.toString() + "\n";
             }
@@ -55,7 +55,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
     @Override
     public boolean containsAllotjamentOperatiu() {
 
-        for (Allotjament a : llista) {
+        for (Allotjament a : llistaAllotjaments) {
             if (a.isOperatiu()) return true;
         }
 
@@ -65,14 +65,14 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
     // Comprova si la llista conté un allotjament concret
     @Override
     public boolean contains(Allotjament allotjament) {
-        return llista.contains(allotjament);
+        return llistaAllotjaments.contains(allotjament);
     }
 
     // Retorna un allotjament segons el seu id, llençant excepció si no es troba
     @Override
     public Allotjament getAllotjament(String id) throws ExcepcioCamping {
 
-        for (Allotjament a : llista) {
+        for (Allotjament a : llistaAllotjaments) {
             if (a.getId().equals(id)) {
                 return a;
             }

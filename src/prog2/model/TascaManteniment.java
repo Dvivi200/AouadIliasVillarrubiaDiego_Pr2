@@ -20,7 +20,7 @@ public class TascaManteniment implements InTascaManteniment {
     // Constructor: inicialitza tots els atributs de la tasca
     public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
         this.num = num;
-        this.tipus = TipusTascaManteniment.valueOf(tipus);
+        this.tipus = tipus;
         this.allotjament = allotjament;
         this.data = data;
         this.dies = dies;
@@ -45,6 +45,11 @@ public class TascaManteniment implements InTascaManteniment {
     @Override
     public String getData() {
         return data;
+    }
+
+    @Override
+    public int getDies() {
+        return dies;
     }
 
     @Override
