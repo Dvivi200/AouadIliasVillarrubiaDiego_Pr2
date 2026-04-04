@@ -1,21 +1,24 @@
 package prog2.model;
 
+// Classe que representa una tasca de manteniment d'un allotjament
 public class TascaManteniment implements InTascaManteniment {
 
+    private int num; // Identificador únic de la tasca
+    private Allotjament allotjament; // Allotjament associat a la tasca
+    private String data; // Data d'inici de la tasca
+    private TipusTascaManteniment tipus; // Tipus de tasca
+    private int dies; // Durada de la tasca en dies
+    
+    // Enum amb els tipus de tasques possibles
     public enum TipusTascaManteniment {
         Reparacio,
         Neteja,
         RevisioTecnica,
         Desinfeccio
-    }
+    };
 
-    private int num;
-    private TipusTascaManteniment tipus;
-    private Allotjament allotjament;
-    private String data;
-    private int dies;
-
-    public TascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) {
+    // Constructor: inicialitza tots els atributs de la tasca
+    public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
         this.num = num;
         this.tipus = TipusTascaManteniment.valueOf(tipus);
         this.allotjament = allotjament;
@@ -23,18 +26,53 @@ public class TascaManteniment implements InTascaManteniment {
         this.dies = dies;
     }
 
-    @Override public int getNum() { return num; }
-    @Override public TipusTascaManteniment getTipus() { return tipus; }
-    @Override public Allotjament getAllotjament() { return allotjament; }
-    @Override public String getData() { return data; }
-    @Override public int getDies() { return dies; }
+    // Getters i setters dels atributs
+    @Override
+    public int getNum() {
+        return num;
+    }
 
-    @Override public void setNum(int num_) { num = num_; }
-    @Override public void setTipus(TipusTascaManteniment tipus_) { tipus = tipus_; }
-    @Override public void setAllotjament(Allotjament a) { allotjament = a; }
-    @Override public void setData(String d) { data = d; }
-    @Override public void setDies(int d) { dies = d; }
+    @Override
+    public TipusTascaManteniment getTipus() {
+        return tipus;
+    }
 
+    @Override
+    public Allotjament getAllotjament() {
+        return allotjament;
+    }
+
+    @Override
+    public String getData() {
+        return data;
+    }
+
+    @Override
+    public void setNum(int num_) {
+        this.num = num_;
+    }
+
+    @Override
+    public void setTipus(TipusTascaManteniment tipus_) {
+        this.tipus = tipus_;
+    }
+
+    @Override
+    public void setAllotjament(Allotjament allotjament_) {
+        this.allotjament = allotjament_;
+    }
+
+    @Override
+    public void setData(String data_) {
+        this.data = data_;
+    }
+
+    @Override
+    public void setDies(int dies_) {
+        this.dies = dies_;
+    }
+
+    // Retorna la il·luminació de l'allotjament associat a la tasca
     @Override
     public String getIluminacioAllotjament() {
         switch (tipus) {
@@ -46,6 +84,7 @@ public class TascaManteniment implements InTascaManteniment {
         return "100%";
     }
 
+    // Representació en String de la tasca de manteniment
     public String toString()
     {
         return "Nº de tasca: " + num + ", tipus: " + tipus + ", allotjament: " + allotjament + ", data" + data + ",  dies previstos: " + dies + ".";

@@ -6,9 +6,12 @@ import prog2.vista.Menu;
 
 import java.util.Scanner;
 
+// Classe que gestiona la vista i interacció amb l'usuari del càmping
 public class VistaCamping {
-    private String nom;
-    private Camping camping;
+    private String nom; // Nom del càmping
+    private Camping camping; // Objecte model que conté tota la informació del càmping
+
+    // Enum amb les opcions del menú principal
     public enum OpcionsMenu {
         LLISTAR_TOTS, LLISTAR_OPERATIUS, LLISTAR_NO_OPERATIUS,
         LLISTAR_ACC_OBERTS, LLISTAR_ACC_TANCATS, LLISTAR_TASQUES,
@@ -17,20 +20,22 @@ public class VistaCamping {
         GUARDAR, RECUPERAR, SORTIR
     }
 
+    // Constructor: inicialitza el nom i crea un objecte Camping amb dades inicials
     public VistaCamping(String nom) {
         this.nom = nom;
         this.camping = new Camping(nom);
-        camping.inicialitzaDadesCamping();
+        camping.inicialitzaDadesCamping(); // Omple el càmping amb dades d'exemple
     }
 
+    // Mètode principal que gestiona el bucle del menú i les interaccions
     public void gestioCamping() {
 
         Scanner sc = new Scanner(System.in);
 
-        // 1. Creación del objeto Menu con las 13 opciones obligatorias [1, 5]
+        // 1. Creació del menú amb totes les opcions
         Menu<OpcionsMenu> menu = new Menu<>("Menú Principal Càmping Green", OpcionsMenu.values());
 
-        // 2. Definición de las descripciones del menú [5]
+        // 2. Descripcions de cada opció del menú
         String[] desc = {
                 "Llistar tots els allotjaments", "Llistar allotjaments operatius", "Llistar allotjaments no operatius",
                 "Llistar accessos oberts", "Llistar accessos tancats", "Llistar tasques de manteniment actives",
@@ -42,15 +47,14 @@ public class VistaCamping {
 
         OpcionsMenu opcio = null;
         do {
-            // 3. Gestión de errores mediante try-catch en la vista [7, 8]
             try {
-                menu.mostrarMenu();
-                opcio = menu.getOpcio(sc);
+                menu.mostrarMenu(); // Mostra el menú
+                opcio = menu.getOpcio(sc); // Llegeix l'opció escollida
 
                 switch (opcio) {
                     case LLISTAR_TOTS:
                         System.out.println(camping.llistarAllotjaments(true));
-                        System.out.println(camping.llistarAllotjaments(false));// Todos los prints en la vista [7]
+                        System.out.println(camping.llistarAllotjaments(false));
                         break;
                     case LLISTAR_OPERATIUS:
                         System.out.println(camping.llistarAllotjaments(true));
@@ -69,7 +73,7 @@ public class VistaCamping {
                         break;
 
                     case AFEGIR_TASCA:
-                        // 4. Solicitar datos específicos según el requisito 7 [2]
+                        // Sol·licita les dades necessàries per crear una tasca
                         System.out.print("Número de tasca: ");
                         int numT = sc.nextInt();
                         sc.nextLine();
@@ -83,13 +87,12 @@ public class VistaCamping {
                         int dies = sc.nextInt();
                         sc.nextLine();
 
-                        // Llamada al modelo para añadir la tarea [9, 10]
                         camping.afegirTascaManteniment(numT, tipus, idA, data, dies);
                         System.out.println("Tasca afegida correctament.");
                         break;
 
                     case COMPLETAR_TASCA:
-                        // 5. Requisito 8: Listar tareas antes de pedir el número [2]
+                        // Mostra les tasques abans de demanar el número
                         System.out.println(camping.llistarTasquesManteniment());
                         System.out.print("Introdueix el número de la tasca a completar: ");
                         int idCompletar = sc.nextInt();
@@ -99,24 +102,24 @@ public class VistaCamping {
                         break;
 
                     case ACCES_SENSE_VEHICLE:
-                        // Requisito 9 [3]
+                        // Mostra el nombre d'accessos no accessibles
                         System.out.println("Número total d'accessos sense vehicle: " + camping.calculaAccessosNoAccessibles());
                         break;
 
                     case METRES_TERRA:
-                        // Requisito 10 [3]
+                        // Mostra la suma total de metres dels accessos de terra
                         System.out.println("Suma total de metres dels accessos de terra: " + camping.calculaMetresTerra());
                         break;
 
                     case GUARDAR:
-                        // Requisito 11: Persistencia [3, 12]
+                        // Sol·licita el fitxer i guarda les dades del càmping
                         System.out.print("Indica el nom del fitxer on guardar (ex: camping.dat): ");
                         camping.save(sc.nextLine());
                         System.out.println("Dades guardades.");
                         break;
 
                     case RECUPERAR:
-                        // Requisito 12: Recuperar mediante método estático [3, 13]
+                        // Sol·licita el fitxer i recupera les dades del càmping
                         System.out.print("Indica el nom del fitxer a carregar: ");
                         this.camping = Camping.load(sc.nextLine());
                         System.out.println("Dades recuperades.");
@@ -130,13 +133,12 @@ public class VistaCamping {
                         break;
                 }
             } catch (ExcepcioCamping e) {
-                // Captura de errores específicos del modelo (ej. alojamiento con tarea activa) [8]
                 System.out.println("ERROR EN EL CÀMPING: " + e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("ERROR: Has d'introduir un número vàlid per als camps numèrics.");
             } catch (Exception e) {
                 System.out.println("ERROR INESPERAT: " + e.getMessage());
             }
-        } while (opcio != OpcionsMenu.SORTIR); // El bucle continúa hasta elegir la opción 13 [4, 5]
+        } while (opcio != OpcionsMenu.SORTIR); // Continua fins que l'usuari tria SORTIR
     }
 }

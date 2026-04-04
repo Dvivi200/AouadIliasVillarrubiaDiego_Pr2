@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import prog2.model.Acces;
+import prog2.model.CamiAsfaltat;
+import prog2.model.CamiTerra;
 import prog2.model.LlistaAllotjaments;
 import prog2.vista.ExcepcioCamping;
 
@@ -39,4 +41,21 @@ public class AccesTest {
         assertFalse(acces2.getEstat());
         assertTrue(acces1.getAAllotjaments() instanceof LlistaAllotjaments);
     }
+
+    @Test
+    void testCamiAsfalt() {
+        // AccesAsfalt guarda m2 d'asfalt. CamiAsfalt no té accessibilitat (false)
+        CamiAsfaltat cami = new CamiAsfaltat("A1", false, 200);
+        assertEquals(200.0, cami.getAsfalt());
+        assertFalse(cami.isAccessibilitat());
+    }
+
+    @Test
+    void testCamiTerra() {
+        // AccesTerra guarda longitud en metres. CamiTerra no té accessibilitat (false)
+        CamiTerra cami = new CamiTerra("A3", true, 100);
+        assertEquals(100.0, cami.getLongitud());
+        assertFalse(cami.isAccessibilitat());
+    }
 }
+

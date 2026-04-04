@@ -3,14 +3,17 @@ package prog2.model;
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
+// Classe que gestiona una llista d'allotjaments dins del càmping
 public class LlistaAllotjaments implements InLlistaAllotjaments {
 
-    private ArrayList<Allotjament> llista;
+    private ArrayList<Allotjament> llistaAllotjaments; // Llista que conté tots els allotjaments
 
-    public LlistaAllotjaments() {
-        llista = new ArrayList<>();
+    // Constructor: inicialitza la llista d'allotjaments
+    LlistaAllotjaments(){
+        llistaAllotjaments = new ArrayList<>();
     }
 
+    // Afegeix un allotjament a la llista, llençant excepció si és null
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
 
@@ -23,11 +26,13 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         llista.add(allotjament);
     }
 
+    // Buida la llista d'allotjaments
     @Override
     public void buidar() {
         llista.clear();
     }
 
+    // Retorna un String amb els allotjaments que tenen l'estat indicat
     @Override
     public String llistarAllotjaments(boolean estat) throws ExcepcioCamping {
 
@@ -46,6 +51,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         return res;
     }
 
+    // Comprova si hi ha almenys un allotjament operatiu
     @Override
     public boolean containsAllotjamentOperatiu() {
 
@@ -56,11 +62,13 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         return false;
     }
 
+    // Comprova si la llista conté un allotjament concret
     @Override
     public boolean contains(Allotjament allotjament) {
         return llista.contains(allotjament);
     }
 
+    // Retorna un allotjament segons el seu id, llençant excepció si no es troba
     @Override
     public Allotjament getAllotjament(String id) throws ExcepcioCamping {
 
@@ -71,9 +79,5 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         }
 
         throw new ExcepcioCamping("Allotjament no trobat");
-    }
-
-    public ArrayList<Allotjament> getLlista() {
-        return llista;
     }
 }
