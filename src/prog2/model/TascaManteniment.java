@@ -91,8 +91,8 @@ public class TascaManteniment implements InTascaManteniment, Serializable {
     }
 
     // Representació en String de la tasca de manteniment
-    public String toString()
-    {
-        return "Nº de tasca: " + num + ", tipus: " + tipus + ", allotjament: " + allotjament + ", data" + data + ",  dies previstos: " + dies + ".";
+    public String toString() {
+        return "Nº de tasca: " + num + ", tipus: " + tipus + ", allotjament: " + allotjament.getId()
+                + ", data: " + data + ", dies previstos: " + dies + ".";
     }
 }

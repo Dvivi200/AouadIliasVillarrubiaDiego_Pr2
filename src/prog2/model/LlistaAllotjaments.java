@@ -81,4 +81,14 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
         throw new ExcepcioCamping("Allotjament no trobat");
     }
+
+    // Retorna un String amb els ids de tots els allotjaments de la llista
+    public String getIds() {
+        String res = "[";
+        for (int i = 0; i < llistaAllotjaments.size(); i++) {
+            res += llistaAllotjaments.get(i).getId();
+            if (i < llistaAllotjaments.size() - 1) res += ", ";
+        }
+        return res + "]";
+    }
 }

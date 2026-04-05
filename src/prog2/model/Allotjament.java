@@ -59,9 +59,11 @@ public abstract class Allotjament implements InAllotjament, Serializable {
 
     //toString de la superclasse
     public String toString() {
-        return "Nom=" + getNom() + ", Id=" + getId() + ", estada mínima en temp ALTA: "
-                + getEstadaMinima(InAllotjament.Temp.ALTA) + ", estada mínima en temp BAIXA: "
-                + getEstadaMinima(InAllotjament.Temp.BAIXA) + ". ";
+        return "Nom=" + getNom() + ", Id=" + getId()
+                + ", estada mínima en temp ALTA: " + getEstadaMinima(InAllotjament.Temp.ALTA)
+                + ", estada mínima en temp BAIXA: " + getEstadaMinima(InAllotjament.Temp.BAIXA)
+                + ", Estat: " + (isOperatiu() ? "Operatiu" : "No operatiu")
+                + ", Il·luminació: " + getIluminacio() + ". ";
     }
 
     //mètode per a les subclasses

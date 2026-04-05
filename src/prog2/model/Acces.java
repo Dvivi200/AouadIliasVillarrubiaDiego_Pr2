@@ -3,18 +3,23 @@ import java.io.Serializable;
 import prog2.vista.ExcepcioCamping;
 
 public abstract class Acces implements InAcces, Serializable {
-    private String nom;
-    private boolean accesibilitat; // Indica si l'accés és accessible (definit a les subclases)
+    private String nom; // Indica si l'accés és accessible (definit a les subclases)
     private boolean estat; // Estat actual de l'accés: obert (true) o tancat (false)
     private LlistaAllotjaments llistaAllotjaments; // Llista d'allotjaments associats a aquest accés
 
     // Constructor principal: inicialitza nom, estat i la llista d'allotjaments
     public Acces(String nom, boolean estat) {
         this.nom = nom;
-        this.accesibilitat = isAccessibilitat(); // Valor definit per la subclasse concreta
         this.estat = estat;
         this.llistaAllotjaments = new LlistaAllotjaments();
     }
+
+    @Override
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom){ this.nom = nom;}
 
     // Mètode abstracte: cada subclasse defineix si és accessible
     public abstract boolean isAccessibilitat();
@@ -49,11 +54,13 @@ public abstract class Acces implements InAcces, Serializable {
 
     // Representació en String de l'objecte Acces
     public String toString(){
-        return "Nom: " + nom + ", Accesible: " + accesibilitat + ", Estat: " + estat;
+        String iluminacio = estat ? "Encesa" : "Apagada";
+        return "Nom: " + nom
+                + ", Accessible: " + isAccessibilitat()
+                + ", Estat: " + (estat ? "Obert" : "Tancat")
+                + ", Il·luminació: " + iluminacio
+                + ", Allotjaments: " + llistaAllotjaments.getIds();
     }
 
-    @Override
-    public String getNom() {
-        return nom;
-    }
+
 }
