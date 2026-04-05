@@ -10,7 +10,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
     private ArrayList<Allotjament> llistaAllotjaments; // Llista que conté tots els allotjaments
 
     // Constructor: inicialitza la llista d'allotjaments
-    LlistaAllotjaments(){
+    public LlistaAllotjaments(){
         llistaAllotjaments = new ArrayList<>();
     }
 
