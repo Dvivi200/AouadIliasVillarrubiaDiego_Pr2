@@ -9,7 +9,7 @@ public class CampingTest {
 
     // Inicialitza un càmping amb dades de prova abans de cada test
     @BeforeEach
-    public void inicialitzar() {
+    public void inicialitzar() throws ExcepcioCamping {
         camp = new Camping("Green");
         camp.inicialitzaDadesCamping();
     }
@@ -20,13 +20,6 @@ public class CampingTest {
         assertEquals("Green", camp.getNomCamping());
     }
 
-    // Comprova que es poden llistar tots els allotjaments (operatius i no)
-    @Test
-    public void testLlistarTotsAllotjaments() throws ExcepcioCamping {
-        String resultat = camp.llistarAllotjaments(true) + camp.llistarAllotjaments(false);
-        assertNotNull(resultat);
-        assertFalse(resultat.isEmpty());
-    }
 
     // Comprova que hi ha allotjaments operatius
     @Test

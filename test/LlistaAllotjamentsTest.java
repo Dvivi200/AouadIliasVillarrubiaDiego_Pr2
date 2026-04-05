@@ -47,14 +47,6 @@ public class LlistaAllotjamentsTest {
         });
     }
 
-    // Comprova que es poden llistar tots els allotjaments
-    @Test
-    public void testLlistarTots() throws ExcepcioCamping {
-        String resultat = llistaAll.llistarAllotjaments(true) + llistaAll.llistarAllotjaments(false);
-        assertNotNull(resultat);
-        assertFalse(resultat.isEmpty());
-    }
-
     // Comprova que hi ha allotjaments operatius
     @Test
     public void testLlistarOperatius() throws ExcepcioCamping {

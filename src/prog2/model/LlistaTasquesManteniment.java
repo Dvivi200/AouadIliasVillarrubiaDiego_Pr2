@@ -18,17 +18,27 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment, Ser
     @Override
     public void afegirTascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) throws ExcepcioCamping {
         for (TascaManteniment t : llistaTasquesManteniment) {
-                if (t.getAllotjament().equals(allotjament)) {
-                     throw new ExcepcioCamping("Ja existeix una tasca per aquest allotjament");
+            if (t.getAllotjament().equals(allotjament)) {
+                throw new ExcepcioCamping("Ja existeix una tasca per aquest allotjament");
             }
         }
+
+        TascaManteniment.TipusTascaManteniment tipusEnum;
+
+        try {
+            tipusEnum = TascaManteniment.TipusTascaManteniment.valueOf(tipus);
+        } catch (IllegalArgumentException e) {
+            throw new ExcepcioCamping("Tipus de tasca no vàlid");
+        }
+
         TascaManteniment tasca = new TascaManteniment(
                 num,
-                TascaManteniment.TipusTascaManteniment.valueOf(tipus),
+                tipusEnum,
                 allotjament,
                 data,
                 dies
         );
+
         llistaTasquesManteniment.add(tasca);
         tasca.getAllotjament().tancarAllotjament(tasca);
     }
