@@ -35,7 +35,7 @@ public interface InAllotjament {
      * @param temp la temporada (ALTA o BAIXA).
      * @return el valor de l'estada mínima per a la temporada indicada.
      */
-    long getEstadaMinima(Temp temp);
+    long getEstadaMinima(InAllotjament.Temp temp);
 
     /**
      * Estableix l'estada mínima per a cada temporada.

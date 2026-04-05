@@ -29,8 +29,8 @@ public abstract class Allotjament implements InAllotjament, Serializable {
 
     public void setId(String id) { this.identificador = id; }
 
-    public long getEstadaMinima(Temp temp) {
-        if (temp == Temp.ALTA)
+    public long getEstadaMinima(InAllotjament.Temp temp) {
+        if (temp == InAllotjament.Temp.ALTA)
             return dies_temp_alta;
         else
             return dies_temp_baixa;
@@ -60,8 +60,8 @@ public abstract class Allotjament implements InAllotjament, Serializable {
     //toString de la superclasse
     public String toString() {
         return "Nom=" + getNom() + ", Id=" + getId() + ", estada mínima en temp ALTA: "
-                + getEstadaMinima(Temp.ALTA) + ", estada mínima en temp BAIXA: "
-                + getEstadaMinima(Temp.BAIXA) + ". ";
+                + getEstadaMinima(InAllotjament.Temp.ALTA) + ", estada mínima en temp BAIXA: "
+                + getEstadaMinima(InAllotjament.Temp.BAIXA) + ". ";
     }
 
     //mètode per a les subclasses

@@ -50,7 +50,10 @@ public class LlistaAllotjamentsTest {
     // Comprova que es poden llistar tots els allotjaments
     @Test
     public void testLlistarTots() throws ExcepcioCamping {
-        String resultat = llistaAll.llistarAllotjaments(true) + llistaAll.llistarAllotjaments(false);
+        assertThrows(ExcepcioCamping.class, () -> {
+            llistaAll.llistarAllotjaments(false);
+        });
+        String resultat = llistaAll.llistarAllotjaments(true);
         assertNotNull(resultat);
         assertFalse(resultat.isEmpty());
     }

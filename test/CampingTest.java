@@ -11,7 +11,11 @@ public class CampingTest {
     @BeforeEach
     public void inicialitzar() {
         camp = new Camping("Green");
-        camp.inicialitzaDadesCamping();
+        try {
+            camp.inicialitzaDadesCamping();
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Comprova que el nom del càmping és correcte
@@ -21,9 +25,13 @@ public class CampingTest {
     }
 
     // Comprova que es poden llistar tots els allotjaments (operatius i no)
+    // Al llistar-los tots, el cas false saltarà une excepcio ya que no hi ha allotjaments aamb aquest estat
     @Test
     public void testLlistarTotsAllotjaments() throws ExcepcioCamping {
-        String resultat = camp.llistarAllotjaments(true) + camp.llistarAllotjaments(false);
+        assertThrows(ExcepcioCamping.class, () -> {
+            camp.llistarAllotjaments(false);
+        });
+        String resultat = camp.llistarAllotjaments(true);
         assertNotNull(resultat);
         assertFalse(resultat.isEmpty());
     }

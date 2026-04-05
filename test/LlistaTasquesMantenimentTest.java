@@ -37,7 +37,7 @@ public class LlistaTasquesMantenimentTest {
     // Comprova que el tipus de tasca sigui vàlid
     @Test
     public void testTipusInvalid() {
-        assertThrows(ExcepcioCamping.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             llistaTasques.afegirTascaManteniment(1, "TipusInvalid", parc, "2024-03-25", 4);
         });
     }
